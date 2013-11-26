@@ -1,8 +1,12 @@
-# Installation #
+# Dot files
+
+This is where I keep all my valuable dot files for safe keeping.
+
+## Installation
 
     git clone git://github.com/kgish/dotfiles.git
 
-# Symlinks #
+## Symlinks
 
 Once cloned you need to create the symlinks by doing the following:
 
@@ -23,16 +27,18 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/vim ~/.vim
 
-## Directories ##
+## Directories
+
 The Vim backup and swap files are in `~/.vim/bkup` and `~/.vim/swp`, so make sure that these directories exist by running:
 
     mkdir -p ~/.vim/bkup
     mkdir -p ~/.vim/swp
 
-## VIM ##
+## VIM
+
 My preferences for Vim are stored in `dotfiles/vimrc` and `dotfiles/gvimrc` respectively. All plugins and scripts are stored in the `dotfiles/vim` directory.
 
-# Credits #
+## Credits
 Special thanks goes to Drew Neil whose inspirational stuff about VIM and his [famous dotfiles][dotfiles] have proven invaluable.
 
 [dotfiles]: https://github.com/nelstrom/dotfiles
