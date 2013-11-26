@@ -1,0 +1,92 @@
+#
+# Kiffin's .screenrc file
+#
+
+# The escape command character
+# escape ^Aa  # default
+#escape ``
+
+# Messages
+activity       "Activity in window %n (%t) [%w:%s]~"
+bell           "Bell in %n (%t) [%w:%s]~"
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended"
+vbell_msg      "Wuff  ----  Wuff!!"
+vbell_msg      " *Beep* "
+
+windowlist title "Num %10=Title %=Flags%"
+windowlist string "  %n - %10= %t %f"
+
+# On/off stuff
+deflogin off
+startup_message off
+vbell on
+# Dropped ssh sessions connections will stay running.
+autodetach on 
+
+# Variables
+msgwait 5
+defscrollback 10000
+term screen
+
+# Default shell
+shell bash
+
+# Default shell title - dynamic
+shelltitle "$ |bash"
+
+caption string "%?%F%{.R.}%?%3n %t%? [%h]%?"
+hardstatus alwayslastline "%{bk}%-Lw%{= W}%50>[%n%f* %t]%{-}%+Lw%< %-= $USER@%H %c %d.%m.%y"
+
+# Log screen errors to a daily log under the speficied directory
+logfile /home/kiffin/logs/screen/%y-%m-%d-%0c.log
+
+# Remove some stupid/dangerous key bindings
+bind k      # kill        - destroy current window
+bind ^k     # "
+bind .      # dumptermcap - write a ".termcap" file
+bind ^\     # quit        - kill all windows and terminate screen
+bind \\     # "             (but ask nicely first)
+bind ^h     # next        - goto next window
+bind h      # hardcopy    - write a "hardcopy.n" file
+
+# Make them better
+bind K kill
+bind I login on
+bind O login off
+bind } history
+
+# More key bindings
+bind a split
+bind j focus down
+bind k focus up
+bind m monitor 
+bind o focus
+bind x remove
+bind q only
+bind s split
+bind t title
+bind w windowlist -b
+bind - resize -5  # Decrease region by 5
+bind = resize +5  # Increase region by 5
+    
+# Terminfo and termcap for nice 256 color terminal
+# Allow bold colors - necessary for some reason
+attrcolor b ".I" 
+# Tell screen how to set colors. AB = background, AF=foreground 
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+    
+# Open up four screens at startup starting with #1
+screen 1
+screen 2
+screen 3
+next      # switch to first screen
+
+#screen -t sh    0 bash
+#screen -t irssi 1 irssi
+
+# Yet another hack:
+# Prepend/append register [/] to the paste if ^a^] is pressed.
+# This lets me have autoindent mode in vi.
+#register [ "\033:se noai\015a"
+#register ] "\033:se ai\015a"
+#bind ^] paste [.]

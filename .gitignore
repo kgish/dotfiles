@@ -1,0 +1,6 @@
+*.swp
+*~
+vim/.netrwhist
+vim/bundle/
+vim/swp
+vim/bkup
