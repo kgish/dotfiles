@@ -17,7 +17,7 @@ set guioptions-=rL      " disable scrollbars
 "                (http://www.vim.org/scripts/script.php?script_id=2937)
 "-------------------------------------------------------------------------
 if exists('*HexHighlight()')
-  nmap <leader>hx :call HexHighlight()<Return>
+  nmap <leader>hh :call HexHighlight()<Return>
 endif
 
 "-------------------------------------------------------------------------

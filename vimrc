@@ -2,15 +2,16 @@ source ~/dotfiles/bundles.vim
 
 let mapleader = ","
 
-map <Leader>ac :sp app/controllers/application_controller.rb<cr>
-map <Leader>bb :!bundle install<cr>
+map <Leader>bb :!bundle install --without=production<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
-map <Leader>h :CommandT<CR>
 nnoremap <leader>hm <Esc>:call ToggleHardMode()<CR>
 map <Leader>nt :NERDTreeToggle<CR>
-map <Leader>j :CommandT app/assets/javascripts<cr>client/
-map <Leader>ps <ESC>:read !pastebin -r<SPACE>
-map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
+map <Leader>pb <ESC>:read !pastebin -r<SPACE>
+map <Leader>b :CommandTBuffer<CR>
+map <Leader>t :CommandT<CR>
+map <Leader>ta :CommandT app/controllers/application_controller.rb<cr>
+map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
+map <Leader>tj :CommandT app/assets/javascripts<cr>client/
 map <Leader>so :sort %<cr>
 map <Leader>vi :tabe ~/.vimrc<CR>
 map <Leader>w <C-w>w
@@ -106,8 +107,8 @@ set iskeyword+=:        " double colons are valid keyword parts, e.g. Perl::Modu
 set incsearch           " use incremental search
 set laststatus=2        " always show status line
 set linebreak
-set listchars=eol:¬,tab:»·,trail:·,extends:>,precedes:<,nbsp:_
 set list
+set listchars=precedes:<,extends:>,tab:▸\ ,eol:¬,trail:·
 set matchpairs+=<:>
 set mouse=a
 set noesckeys           " remove delay when hitting esc
@@ -124,6 +125,7 @@ set showmatch
 set sidescroll=10
 set smartcase
 set smartindent
+set softtabstop=4
 set statusline=%t       "tail of the filename
 " statusline start
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
@@ -141,11 +143,12 @@ set tabstop=4           " number of spaces that a <Tab> in the file counts for
 set tags=./tags,tags,../tags,../../tags,../../../tags
 set timeout timeoutlen=1000 ttimeoutlen=100 " remove delay hitting esc insert mode
 set visualbell          " visual bell instead of beeping
+set visualbell t_vb=    " turn off visual bell, error flash
 set whichwrap=b,s,<,>,[,]
 set wildignore+=*.bak,*.o,*.e,*~,*.dll,*.o,*.obj,*.exe,*.pyc,*.swp,*.jpg,*.gif,*.png
 set wildmenu            " Better? completion on command line
 set wildmode=list:longest,full
-set wmh=0               " minimum window height is 0, for stacking windows
+set winminheight=0      " more usable for stacking windows
 set wrap
 
 "-------------------------------------------------------------------------
@@ -190,11 +193,13 @@ endif
 " Auto command
 "--------------------------------------------------------------------------
 if has("autocmd")
+  " Enable file type detection
+  filetype on
+
   augroup myfiletypes
     " Clear old autocmds in group
     autocmd!
     " autoindent with two spaces, always expand tabs
-    autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
     autocmd FileType ruby,eruby,yaml setlocal path+=lib
   augroup END
 
@@ -211,10 +216,10 @@ if has("autocmd")
   " Racket stuff
   au BufReadPost *.rkt,*.rktl set filetype=scheme
   au filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
-  au Filetype ruby setlocal ts=2 sw=2 expandtab
+  au Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
 
   " Miscellaneous
-  au Filetype css setlocal ts=2 sw=2 expandtab
+  au Filetype css setlocal ts=2 sw=2 sts=2 expandtab
   au FileType css set omnifunc=csscomplete#CompleteCSS
 
   " Template toolkit syntax
@@ -288,6 +293,7 @@ set formatoptions=qro
 
 let perl_extended_vars=1 " highlight advanced perl vars inside of strings
 let perl_include_pod=1 " syntax highlighting for POD files or POD segments
+let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 
 "map ,pc :!perl -c %<CR>
 "map ,pR :!perl -t %<CR>
@@ -343,6 +349,7 @@ nmap <leader>= :call Preserve("normal gg=G")<CR>
 "--------------------------------------------------------------------------
 " :redir > keymap.txt
 " :silent map
+" :silent map!
 " :redir END
 
 "--------------------------------------------------------------------------

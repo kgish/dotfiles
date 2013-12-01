@@ -21,7 +21,7 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/gitk ~/.gitk
     ln -s ~/dotfiles/global-gitignore ~/.gitignore
     ln -s ~/dotfiles/gvimrc ~/.gvimrc
-    ln -s ~/dotfiles/irbc ~/.irbc
+    ln -s ~/dotfiles/irbrc ~/.irbrc
     ln -s ~/dotfiles/profile ~/.profile
     ln -s ~/dotfiles/screenrc ~/.screenrc
     ln -s ~/dotfiles/vimrc ~/.vimrc
