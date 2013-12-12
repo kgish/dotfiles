@@ -20,6 +20,10 @@ if exists('*HexHighlight()')
   nmap <leader>hh :call HexHighlight()<Return>
 endif
 
+"Invisible character colors
+"highlight NonText guifg=#4a4a5
+"highlight SpecialKey guifg=#4a4a5
+
 "-------------------------------------------------------------------------
 " Save and restore screen size and position
 "-------------------------------------------------------------------------

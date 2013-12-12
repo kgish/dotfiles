@@ -10,9 +10,10 @@
 activity       "Activity in window %n (%t) [%w:%s]~"
 bell           "Bell in %n (%t) [%w:%s]~"
 pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended"
-vbell_msg      "Wuff  ----  Wuff!!"
+#vbell_msg      "Wuff  ----  Wuff!!"
 vbell_msg      " *Beep* "
 
+# Windows stuff
 windowlist title "Num %10=Title %=Flags%"
 windowlist string "  %n - %10= %t %f"
 
@@ -20,6 +21,7 @@ windowlist string "  %n - %10= %t %f"
 deflogin off
 startup_message off
 vbell on
+
 # Dropped ssh sessions connections will stay running.
 autodetach on 
 
@@ -38,7 +40,7 @@ caption string "%?%F%{.R.}%?%3n %t%? [%h]%?"
 hardstatus alwayslastline "%{bk}%-Lw%{= W}%50>[%n%f* %t]%{-}%+Lw%< %-= $USER@%H %c %d.%m.%y"
 
 # Log screen errors to a daily log under the speficied directory
-logfile /home/kiffin/logs/screen/%y-%m-%d-%0c.log
+logfile /home/kiffin/.screen/logs/%y-%m-%d-%0c.log
 
 # Remove some stupid/dangerous key bindings
 bind k      # kill        - destroy current window
@@ -72,14 +74,22 @@ bind = resize +5  # Increase region by 5
 # Terminfo and termcap for nice 256 color terminal
 # Allow bold colors - necessary for some reason
 attrcolor b ".I" 
+
 # Tell screen how to set colors. AB = background, AF=foreground 
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-    
-# Open up four screens at startup starting with #1
-screen 1
+
+# Open up five screens at startup starting with #1
+screen -t vim 1 vim
+split
+focus
 screen 2
+resize 5
 screen 3
+screen 4
+screen 5
 next      # switch to first screen
+next
+focus
 
 #screen -t sh    0 bash
 #screen -t irssi 1 irssi

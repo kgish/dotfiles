@@ -2,16 +2,25 @@ source ~/dotfiles/bundles.vim
 
 let mapleader = ","
 
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
 map <Leader>bb :!bundle install --without=production<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
 nnoremap <leader>hm <Esc>:call ToggleHardMode()<CR>
-map <Leader>nt :NERDTreeToggle<CR>
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR> 
+map <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>t :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 map <Leader>pb <ESC>:read !pastebin -r<SPACE>
-map <Leader>b :CommandTBuffer<CR>
-map <Leader>t :CommandT<CR>
-map <Leader>ta :CommandT app/controllers/application_controller.rb<cr>
-map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
-map <Leader>tj :CommandT app/assets/javascripts<cr>client/
+"map <Leader>ta :CommandT app/controllers/application_controller.rb<cr>
+"map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
+"map <Leader>tj :CommandT app/assets/javascripts<cr>client/
 map <Leader>so :sort %<cr>
 map <Leader>vi :tabe ~/.vimrc<CR>
 map <Leader>w <C-w>w
@@ -73,7 +82,6 @@ map <Leader>x :exec getline(".")<cr>
 "map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 "map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
- map <C-h> :nohl<cr>
 imap <C-l> :<Space>
  map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
@@ -158,13 +166,19 @@ set wrap
 let g:screen_size_restore_pos = 1
 
 " Prevent CommandT from taking forever to start for large directories
-let g:CommandTMaxDepth = 10
+let g:CommandTMaxDepth = 6
 let g:CommandTMaxHeight = 50
 let g:CommandTMatchWindowAtTop = 1
 let g:CommandTWildIgnore=&wildignore . ",**/cache/*"
 
+" Snipmate
+let g:snips_author = 'Kiffin Gish <kiffin.gish@planet.nl>'
+
 " Arrow keys disabled, but not h,j,k,l
 let g:HardMode_level = 'wannabe'
+
+" vim-session plugin do not ask to save
+let g:session_autosave = 'no'
 
 command! Q q " Bind :Q to :q
 command! Qall qall
@@ -276,9 +290,17 @@ endif
 "noremap <f7> <esc>:cprevious<cr>
 "noremap <f8> <esc>:cnext<cr>
 
+"--------------------------------------------------------------------------
+" Window navigation, see :help ctrl-w
+"--------------------------------------------------------------------------
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " To move between buffers and maximise the selected one
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
+"map <C-J> <C-W>j<C-W>_
+"map <C-K> <C-W>k<C-W>_
 "--------------------------------------------------------------------------
 " Toggle highlighted search
 "--------------------------------------------------------------------------

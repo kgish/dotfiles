@@ -132,9 +132,12 @@ export DBGP_IDEKEY="kgish"
 
 # Prompt for screen shelltitle
 case "$TERM" in
-    xterm|screen)
+    screen)
+        # Show running process in screen title
         export PS1='\[\033k\033\\\]'
-#        export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(prompt_w) \[\033[00m\]'$PS1'\$ '
+        export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(prompt_w) \[\033[00m\]\[\033[m\]'$PS1'\$ '
+        ;;
+    *)
         export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(prompt_w) \[\033[00m\]\[\033[m\]\$ '
         ;;
 esac

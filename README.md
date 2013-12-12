@@ -24,6 +24,7 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/irbrc ~/.irbrc
     ln -s ~/dotfiles/profile ~/.profile
     ln -s ~/dotfiles/screenrc ~/.screenrc
+    ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/vim ~/.vim
 
