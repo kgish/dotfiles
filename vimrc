@@ -1,5 +1,7 @@
 source ~/dotfiles/bundles.vim
 
+syntax on
+
 let mapleader = ","
 
 if exists(":Tabularize")
@@ -200,6 +202,9 @@ nmap j gj
 "-------------------------------------------------------------------------
 colorscheme vividchalk
 if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+if $TERM == 'xterm'
   set t_Co=256
 endif
 
