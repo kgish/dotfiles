@@ -148,26 +148,50 @@ esac
 #find $HOME/.vim/backup -name "*" -type f -mtime +7 -exec rm -f {} \;
 
 # Perlbrew
-source ~/perl5/perlbrew/etc/bashrc
-export PATH=$PATH:~/perl5/bin
+if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+    source ~/perl5/perlbrew/etc/bashrc
+fi
+if [ -d "$HOME/perl5/bin" ]; then
+    export PATH=$PATH:~/perl5/bin
+fi
 
 # Standard ML of New Jersey
-export PATH=$PATH:/opt/sml/bin
+if [ -d "/opt/sml/bin" ]; then
+    export PATH=$PATH:/opt/sml/bin
+fi
 
 # RubyMine
-export PATH=$PATH:/opt/rubymine/bin
+if [ -d "/opt/rubymine/bin" ]; then
+    export PATH=$PATH:/opt/rubymine/bin
+fi
 
 # WebStorm
-export PATH=$PATH:/opt/webstorm/bin
+if [ -d "/opt/webstorm/bin" ]; then
+    export PATH=$PATH:/opt/webstorm/bin
+fi
+
+# RVM
+if [ -d "$HOME/.rvm/bin" ]; then
+    PATH=$PATH:$HOME/.rvm/bin
+fi
+if [ -f "$HOME/.rvm/scripts/rvm" ]; then
+    source "$HOME/.rvm/scripts/rvm"
+fi
 
 # SBT
-#PATH=$PATH:/opt/sbt/bin # Add SBT to PATH for scripting
+if [ -d "/opt/sbt/bin" ]; then
+    export PATH=$PATH:/opt/sbt/bin
+fi
 
-### Added by the Heroku Toolbelt
-export PATH=/usr/local/heroku/bin:$PATH
+# Heroku Toolbelt
+if [ -d "/usr/local/heroku/bin" ]; then
+    export PATH=/usr/local/heroku/bin:$PATH
+fi
 
 # VIM74
-#export PATH=/opt/vim74/bin:$PATH
+if [ -d "/opt/vim74/bin" ]; then
+    export PATH=/opt/vim74/bin:$PATH
+fi
 
 # Trim working dir to 1/4 the screen width
 function prompt_w () {
