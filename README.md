@@ -28,6 +28,16 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/vim ~/.vim
 
+## Vundle
+
+Now you will have setup the vim plugin [vundle][vundle] to get things going:
+
+    $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+Then fire up vim (ignore error messages and hit enter) and run the following command:
+
+    :BundleInstall<CR>
+
 ## Directories
 
 The Vim backup and swap files are in `~/.vim/bkup` and `~/.vim/swp`, so make sure that these directories exist by running:
@@ -43,3 +53,5 @@ My preferences for Vim are stored in `dotfiles/vimrc` and `dotfiles/gvimrc` resp
 Special thanks goes to Drew Neil whose inspirational stuff about VIM and his [famous dotfiles][dotfiles] have proven invaluable.
 
 [dotfiles]: https://github.com/nelstrom/dotfiles
+[vundle]: https://github.com/gmarik/vundle
+
