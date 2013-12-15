@@ -49,9 +49,14 @@ The Vim backup and swap files are in `~/.vim/bkup` and `~/.vim/swp`, so make sur
 
 My preferences for Vim are stored in `dotfiles/vimrc` and `dotfiles/gvimrc` respectively. All plugins and scripts are stored in the `dotfiles/vim` directory.
 
+## Command-T
+
+In order to be able to use the [Command-T plugin][commandt], you must have a version of vim compiled with ruby support. For more information, please have a look at the [online instructions][instructions].
+
 ## Credits
 Special thanks goes to Drew Neil whose inspirational stuff about VIM and his [famous dotfiles][dotfiles] have proven invaluable.
 
 [dotfiles]: https://github.com/nelstrom/dotfiles
 [vundle]: https://github.com/gmarik/vundle
-
+[commandt]: https://github.com/wincent/Command-T
+[instructions]: https://github.com/wincent/Command-T/blob/master/doc/command-t.txt 
