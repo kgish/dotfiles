@@ -21,7 +21,7 @@ nnoremap <silent> <Leader>t :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 map <Leader>pb <ESC>:read !pastebin -r<SPACE>
 "map <Leader>ta :CommandT app/controllers/application_controller.rb<cr>
-"map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
+map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
 "map <Leader>tj :CommandT app/assets/javascripts<cr>client/
 map <Leader>so :sort %<cr>
 map <Leader>vi :tabe ~/.vimrc<CR>
@@ -206,6 +206,12 @@ if $COLORTERM == 'gnome-terminal'
 endif
 if $TERM == 'xterm'
   set t_Co=256
+endif
+
+" Highlight the status bar when in insert mode
+if version >= 700
+  au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
+  au InsertLeave * hi StatusLine ctermbg=255 ctermfg=0
 endif
 
 "--------------------------------------------------------------------------
