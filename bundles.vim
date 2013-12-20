@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 Bundle 'gmarik/vundle'
 
 " My bundles
+Bundle 'epmatsw/ag.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'godlygeek/tabular'
 Bundle 'msanders/snipmate.vim'

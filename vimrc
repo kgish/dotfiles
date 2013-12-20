@@ -4,12 +4,23 @@ syntax on
 
 let mapleader = ","
 
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+" Tabularize stuff
+silent! nmap <Leader>a= :Tabularize /=<CR>
+silent! vmap <Leader>a= :Tabularize /=<CR>
+silent! nmap <Leader>a: :Tabularize /:\zs<CR>
+silent! vmap <Leader>a: :Tabularize /:\zs<CR>
+
+if has("spell")
+  " Toggle spell checking on and off
+  nmap <silent> <leader>s :set spell!<CR>
+  " Set region to US English
+  set spelllang=en_us
 endif
+
+" map Silver Searcher
+silent! map <leader>a :Ag!<space>
+" search for word under cursor with Silver Searcher
+silent! map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
 
 map <Leader>bb :!bundle install --without=production<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
@@ -31,7 +42,7 @@ map <Leader>x :exec getline(".")<cr>
 "vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 "vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 "map <Leader>cc :!cucumber --drb %<CR>
-"map <Leader>cu :Tabularize /\|<CR>
+map <Leader>cu :Tabularize /\|<CR>
 "map <Leader>co ggVG"*y
 "map <Leader>cc :Rjcollection client/
 "map <Leader>cj :Rjspec client/
