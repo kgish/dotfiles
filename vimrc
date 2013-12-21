@@ -39,7 +39,8 @@ map <Leader>vi :tabe ~/.vimrc<CR>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
 
-"vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+"vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| 
+"  \ sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 "vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 "map <Leader>cc :!cucumber --drb %<CR>
 map <Leader>cu :Tabularize /\|<CR>
@@ -103,28 +104,32 @@ imap <C-s> <esc>:w<CR>
  map <C-n> :cn<CR>
  map <C-p> :cp<CR>
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " General
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 set autoindent          " always set autoindent on
 set autoread            " read open files again when changed outside Vim
 set autowrite
 set autowrite           " write a modified buffer on each :next , ...
 set background=dark     " can be light or dark
-set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set backspace=indent,eol,start " allow backspacing over everything in insert 
+                               " mode
 set backupdir =~/.vim/bkup
 set browsedir=current   " which directory to use for the file browser
-set complete+=k         " for keyword completion also scan the files given with the 'dictionary' option
+set complete+=k         " for keyword completion also scan the files given 
+                        " with the 'dictionary' option
 set dictionary+=/usr/share/dict/words
 set directory=~/.vim/swp " directory to place swap files in
 set expandtab           " no real tabs please!
-set gdefault            " assume the /g flag on :s substitutions to replace all matches in a line
+set gdefault            " assume the /g flag on :s substitutions to replace 
+                        " all matches in a line
 set grepprg=grep
 set hidden              " you can change buffers without saving
 set history=500
 set hlsearch
 set ignorecase
-set iskeyword+=:        " double colons are valid keyword parts, e.g. Perl::Module
+set iskeyword+=:        " double colons are valid keyword parts, e.g. 
+                        " for Perl::Module
 set incsearch           " use incremental search
 set laststatus=2        " always show status line
 set linebreak
@@ -162,19 +167,21 @@ set statusline+=\ %P    "percent through file
 " statusline end
 set tabstop=4           " number of spaces that a <Tab> in the file counts for
 set tags=./tags,tags,../tags,../../tags,../../../tags
-set timeout timeoutlen=1000 ttimeoutlen=100 " remove delay hitting esc insert mode
+set timeout timeoutlen=1000 ttimeoutlen=100 " remove delay hitting esc insert 
+                                            " mode
 set visualbell          " visual bell instead of beeping
 set visualbell t_vb=    " turn off visual bell, error flash
 set whichwrap=b,s,<,>,[,]
-set wildignore+=*.bak,*.o,*.e,*~,*.dll,*.o,*.obj,*.exe,*.pyc,*.swp,*.jpg,*.gif,*.png
+set wildignore+=*.bak,*.o,*.e,*~,*.dll,*.o,*.obj,*.exe,*.pyc,*.swp,*.jpg
+set wildignore+=*.gif,*.png
 set wildmenu            " Better? completion on command line
 set wildmode=list:longest,full
 set winminheight=0      " more usable for stacking windows
 set wrap
 
-"-------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Globals
-"-------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " To enable the saving and restoring of screen positions.
 let g:screen_size_restore_pos = 1
 
@@ -208,9 +215,9 @@ map K <Nop>
 nmap k gk
 nmap j gj
 
-"-------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Color scheme
-"-------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 colorscheme vividchalk
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
@@ -225,9 +232,9 @@ if version >= 700
   au InsertLeave * hi StatusLine ctermbg=255 ctermfg=0
 endif
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Auto command
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 if has("autocmd")
   " Enable file type detection
   filetype on
@@ -240,10 +247,9 @@ if has("autocmd")
   augroup END
 
 " When loading text files, wrap them and don't split up words.
-  au BufNewFile,BufRead *.txt setlocal wrap
-  au BufNewFile,BufRead *.txt setlocal lbr
-  au BufNewFile,BufRead *.txt setlocal nolist " Don't display whitespace
-  au BufNewFile,BufRead *.txt set colorcolumn=80
+  au BufNewFile,BufRead *.txt setlocal wrap linebreak colorcolumn=80
+  au BufNewFile,BufRead *.txt setlocal formatoptions+=t
+"  au BufNewFile,BufRead *.txt setlocal nolist " Don't display whitespace
   "
   " For all text files set 'textwidth' to 78 characters.
   au FileType text,vim setlocal textwidth=78
@@ -254,8 +260,9 @@ if has("autocmd")
   au filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
   au Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
 
-  " Miscellaneous
+" Miscellaneous
   au Filetype css setlocal ts=2 sw=2 sts=2 expandtab
+  au Filetype vim setlocal ts=2 sw=2 sts=2 expandtab
   au FileType css set omnifunc=csscomplete#CompleteCSS
 
   " Template toolkit syntax
@@ -264,27 +271,35 @@ if has("autocmd")
   au BufNewFile,BufRead *.pod setf pod
 
   " Restore cursor to previous (col,row) position.
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | 
+    \ exe "normal! g`\"" | endif
   "
   " Remove trailing whitespace on save for certain files.
-  au BufWritePre *.py,*.js,*.css,*.rb.*.txt,*.pl,*.cgi silent! call Preserve("%s/\\s\\+$//e")<CR>
+  au BufWritePre *.py,*.js,*.css,*.rb.*.txt,*.pl,*.cgi silent! call 
+    \ Preserve("%s/\\s\\+$//e")<CR>
 
   " If no files specified start NERDTree
   au vimenter * if !argc() | NERDTree | endif
 
   " Close vim if only window left open is a NERDTree
-  au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-  " Enable hardmode by default (disble arrow keys)
-"  au VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+  au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
+    \ b:NERDTreeType == "primary") | q | endif
 
   " Format xml files
   au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
+  " Perl files
+  au Filetype perl setlocal ts=4 sw=4 sts=4 expandtab
+  au Filetype perl setlocal formatoptions=qro
+  au Filetype perl setlocal formatprg=perl\ -MText::Autoformat\ -e'autoformat'
+
+  " Enable hardmode by default (disble arrow keys)
+"  au VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+
 endif
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Hot keys
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 "noremap   <silent> <F2>         :write<CR>
 "noremap   <silent> <F3>         :Explore<CR>
 "noremap   <silent> <F4>         :execute ":ptag ".expand("<cword>")<CR>
@@ -312,9 +327,9 @@ endif
 "noremap <f7> <esc>:cprevious<cr>
 "noremap <f8> <esc>:cnext<cr>
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Window navigation, see :help ctrl-w
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -323,20 +338,16 @@ map <C-l> <C-w>l
 " To move between buffers and maximise the selected one
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Toggle highlighted search
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Press Space to turn off highlighting and clear any message already 
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Perl stuff
-"--------------------------------------------------------------------------
-set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
-set formatoptions=qro
-
+"-----------------------------------------------------------------------------
 let perl_extended_vars=1 " highlight advanced perl vars inside of strings
-let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 
 "map ,pc :!perl -c %<CR>
@@ -351,9 +362,9 @@ let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 " Run current (.t) file through "Build test"
 "map ,bt :!perl Build test verbose=1 --test_files=%<CR>
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Some useful tips
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Make pasting from external programs work properly
 "nnoremap <F2> :set invpaste paste?<CR>
 "imap <F2> <C-O><F2>
@@ -388,17 +399,17 @@ endfunction
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>= :call Preserve("normal gg=G")<CR>
 
-"--------------------------------------------------------------------------
-" Print all key mappings to file
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
+" Another tip: print all key mappings to file
+"-----------------------------------------------------------------------------
 " :redir > keymap.txt
 " :silent map
 " :silent map!
 " :redir END
 
-"--------------------------------------------------------------------------
-" Jumping long distances
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
+" More tips: jumping long distances
+"-----------------------------------------------------------------------------
 " nG  - jump to line n ("line 5, Go")
 " C-o - jump backwards ("out")
 " C-i - jump forwards ("in")
@@ -408,4 +419,3 @@ nmap <leader>= :call Preserve("normal gg=G")<CR>
 " zt  - put this line at the 't'op of the screen
 " zb  - put this line at the 'b'ottom of the screen
 " zz  - put this line at the middle of the screen
-
