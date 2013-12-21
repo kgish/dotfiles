@@ -4,6 +4,7 @@
 [alias]
 	co = checkout
 	br = branch
+	d = difftool
 [core]
 	editor = vim
 	autocrlf = input
@@ -11,3 +12,7 @@
 	helper = cache --timeout=3600
 [merge]
 	tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
