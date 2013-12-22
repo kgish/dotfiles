@@ -10,11 +10,11 @@ Bundle 'gmarik/vundle'
 Bundle 'gmarik/vundle'
 
 " My bundles
-Bundle 'epmatsw/ag.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'godlygeek/tabular'
 Bundle 'msanders/snipmate.vim'
 Bundle 'pangloss/vim-javascript.git'
+Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tomtom/tcomment_vim'

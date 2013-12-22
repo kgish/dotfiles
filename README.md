@@ -53,6 +53,15 @@ My preferences for Vim are stored in `dotfiles/vimrc` and `dotfiles/gvimrc` resp
 
 In order to be able to use the [Command-T plugin][commandt], you must have a version of vim compiled with ruby support. For more information, please have a look at the [online instructions][instructions].
 
+## Silver Search plugin
+
+The [Ag plugin][agvim] is the VIM front-end for [the silver searcher][silversearcher], which is basically ack on steroids. Installed as follows:
+
+    git clone https://github.com/ggreer/the_silver_searcher
+    cd the_silver_searcher
+    ./build.sh
+    sudo make install 
+
 ## Credits
 Special thanks goes to Drew Neil whose inspirational stuff about VIM and his [famous dotfiles][dotfiles] have proven invaluable.
 
@@ -60,3 +69,6 @@ Special thanks goes to Drew Neil whose inspirational stuff about VIM and his [fa
 [vundle]: https://github.com/gmarik/vundle
 [commandt]: https://github.com/wincent/Command-T
 [instructions]: https://github.com/wincent/Command-T/blob/master/doc/command-t.txt 
+[agvim]: https://github.com/rking/ag.vim
+[silversearcher]:  https://github.com/ggreer/the_silver_searcher
+
