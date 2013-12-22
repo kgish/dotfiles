@@ -17,10 +17,16 @@ if has("spell")
   set spelllang=en_us
 endif
 
-" map Silver Searcher
-silent! map <leader>a :Ag!<space>
-" search for word under cursor with Silver Searcher
-silent! map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
+if executable('ag')
+  let g:agprg="ag --column --smart-case"
+  let g:aghighlight=1
+  " map Silver Searcher
+  silent! map <leader>a :Ag!<space>
+  " search for word under cursor with Silver Searcher
+  silent! map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
 
 map <Leader>bb :!bundle install --without=production<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
@@ -189,7 +195,7 @@ let g:screen_size_restore_pos = 1
 let g:CommandTMaxDepth = 6
 let g:CommandTMaxHeight = 50
 let g:CommandTMatchWindowAtTop = 1
-let g:CommandTWildIgnore=&wildignore . ",**/cache/*"
+let g:CommandTWildIgnore = &wildignore . ",**/cache/*"
 
 " Snipmate
 let g:snips_author = 'Kiffin Gish <kiffin.gish@planet.nl>'
