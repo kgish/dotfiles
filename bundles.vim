@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 " My bundles
 Bundle 'flazz/vim-colorschemes'
 Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
 Bundle 'msanders/snipmate.vim'
 Bundle 'pangloss/vim-javascript.git'
 Bundle 'rking/ag.vim'

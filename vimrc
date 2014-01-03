@@ -5,10 +5,10 @@ syntax on
 let mapleader = ","
 
 " Tabularize stuff
-silent! nmap <Leader>a= :Tabularize /=<CR>
-silent! vmap <Leader>a= :Tabularize /=<CR>
-silent! nmap <Leader>a: :Tabularize /:\zs<CR>
-silent! vmap <Leader>a: :Tabularize /:\zs<CR>
+"silent! nmap <Leader>a= :Tabularize /=<CR>
+"silent! vmap <Leader>a= :Tabularize /=<CR>
+"silent! nmap <Leader>a: :Tabularize /:\zs<CR>
+"silent! vmap <Leader>a: :Tabularize /:\zs<CR>
 
 if has("spell")
   " Toggle spell checking on and off
@@ -28,8 +28,10 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-map <Leader>bb :!bundle install --without=production<cr>
-nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
+"nmap <F8> :TagbarToggle<CR>
+
+map <Leader>bb :!bundle install --without=production<CR>
+nmap <Leader>bi :source ~/.vimrc<CR>:BundleInstall<cr>
 nnoremap <leader>hm <Esc>:call ToggleHardMode()<CR>
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR> 
@@ -37,17 +39,17 @@ map <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>t :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 map <Leader>pb <ESC>:read !pastebin -r<SPACE>
-"map <Leader>ta :CommandT app/controllers/application_controller.rb<cr>
-map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
-"map <Leader>tj :CommandT app/assets/javascripts<cr>client/
-map <Leader>so :sort %<cr>
+"map <Leader>ta :CommandT app/controllers/application_controller.rb<CR>
+"map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
+"map <Leader>tj :CommandT app/assets/javascripts<CR>client/
+map <Leader>so :sort %<CR>
 map <Leader>vi :tabe ~/.vimrc<CR>
 map <Leader>w <C-w>w
-map <Leader>x :exec getline(".")<cr>
+map <Leader>x :exec getline(".")<CR>
 
 "vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| 
 "  \ sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-"vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
+"vmap <Leader>bed "td?describe<CR>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 "map <Leader>cc :!cucumber --drb %<CR>
 map <Leader>cu :Tabularize /\|<CR>
 "map <Leader>co ggVG"*y
@@ -56,45 +58,45 @@ map <Leader>cu :Tabularize /\|<CR>
 "map <Leader>cm :Rjmodel client/
 "map <Leader>ct :Rtemplate client/
 "map <Leader>cv :Rjview client/
-"map <Leader>d odebugger<cr>puts 'debugger'<esc>:w<cr>
+"map <Leader>d odebugger<CR>puts 'debugger'<esc>:w<CR>
 "map <Leader>ec :e ~/code/
 "map <Leader>gac :Gcommit -m -a ""<LEFT>
 "map <Leader>gc :Gcommit -m ""<LEFT>
 "map <Leader>gs :Gstatus<CR>
-"map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
+"map <Leader>gw :!git add . && git commit -m 'WIP' && git push<CR>
 "map <Leader>f :call OpenFactoryFile()<CR>
 "map <Leader>fix :cnoremap % %<CR>
 "map <Leader>fa :sp test/factories.rb<CR>
 "map <Leader>i mmgg=G`m<CR>
-"map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
+"map <Leader>l oconsole.log 'debugging'<esc>:w<CR>
 "map <Leader>m :Rmodel
-"map <Leader>o :w<cr>:call RunCurrentLineInTest()<CR>
+"map <Leader>o :w<CR>:call RunCurrentLineInTest()<CR>
 "map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 "map <Leader>ra :%s/
 "map <Leader>rd :!bundle exec rspec % --format documentation<CR>
-"map <Leader>rs :vsp <C-r>#<cr><C-w>w
-"map <Leader>rt q:?!ruby<cr><cr>
-"map <Leader>rw :%s/\s\+$//<cr>:w<cr>
-"map <Leader>sc :sp db/schema.rb<cr>
-"map <Leader>sg :sp<cr>:grep
-"map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
+"map <Leader>rs :vsp <C-r>#<CR><C-w>w
+"map <Leader>rt q:?!ruby<CR><cr>
+"map <Leader>rw :%s/\s\+$//<CR>:w<cr>
+"map <Leader>sc :sp db/schema.rb<CR>
+"map <Leader>sg :sp<CR>:grep
+"map <Leader>sj :call OpenJasmineSpecInBrowser()<CR>
 "map <Leader>sm :RSmodel
 "map <Leader>sp yss<p>
 "map <Leader>sn :e ~/.vim/snippets/ruby.snippets<CR>
-"map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
-"map <Leader>ss ds)i <esc>:w<cr>
+"map <Leader>sq j<c-v>}klllcs<esc>:wq<CR>
+"map <Leader>ss ds)i <esc>:w<CR>
 "map <Leader>st :!ruby -Itest % -n "//"<left><left>
 "map <Leader>su :RSunittest
 "map <Leader>sv :RSview
-"map <Leader>t :w<cr>:call RunCurrentTest()<CR>
-"map <Leader>y :!rspec --drb %<cr>
-"map <Leader>u :Runittest<cr>
-"map <Leader>vc :RVcontroller<cr>
-"map <Leader>vf :RVfunctional<cr>
-"map <Leader>vg :vsp<cr>:grep
+"map <Leader>t :w<CR>:call RunCurrentTest()<CR>
+"map <Leader>y :!rspec --drb %<CR>
+"map <Leader>u :Runittest<CR>
+"map <Leader>vc :RVcontroller<CR>
+"map <Leader>vf :RVfunctional<CR>
+"map <Leader>vg :vsp<CR>:grep
 "map <Leader>vu :RVunittest<CR>
-"map <Leader>vm :RVmodel<cr>
-"map <Leader>vv :RVview<cr>
+"map <Leader>vm :RVmodel<CR>
+"map <Leader>vv :RVview<CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -110,9 +112,9 @@ imap <C-s> <esc>:w<CR>
  map <C-n> :cn<CR>
  map <C-p> :cp<CR>
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " General
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 set autoindent          " always set autoindent on
 set autoread            " read open files again when changed outside Vim
 set autowrite
@@ -185,9 +187,9 @@ set wildmode=list:longest,full
 set winminheight=0      " more usable for stacking windows
 set wrap
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Globals
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " To enable the saving and restoring of screen positions.
 let g:screen_size_restore_pos = 1
 
@@ -221,9 +223,9 @@ map K <Nop>
 nmap k gk
 nmap j gj
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Color scheme
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 colorscheme vividchalk
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
@@ -238,9 +240,9 @@ if version >= 700
   au InsertLeave * hi StatusLine ctermbg=255 ctermfg=0
 endif
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Auto command
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 if has("autocmd")
   " Enable file type detection
   filetype on
@@ -264,7 +266,7 @@ if has("autocmd")
   " Racket stuff
   au BufReadPost *.rkt,*.rktl set filetype=scheme
   au filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
-  au Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
+  au Filetype ruby,eruby setlocal ts=2 sw=2 sts=2 expandtab
 
 " Miscellaneous
   au Filetype css setlocal ts=2 sw=2 sts=2 expandtab
@@ -303,39 +305,39 @@ if has("autocmd")
 "  au VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 endif
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Hot keys
-"-----------------------------------------------------------------------------
-"noremap   <silent> <F2>         :write<CR>
+"--------------------------------------------------------------------------
+noremap   <silent> <F2>         :write<CR>
 "noremap   <silent> <F3>         :Explore<CR>
 "noremap   <silent> <F4>         :execute ":ptag ".expand("<cword>")<CR>
 "noremap   <silent> <F5>         :copen<CR>
 "noremap   <silent> <F6>         :cclose<CR>
-"noremap   <silent> <F7>         :cprevious<CR>
-"noremap   <silent> <F8>         :cnext<CR>
+noremap   <silent> <F7>         :cprevious<CR>
+noremap   <silent> <F8>         :cnext<CR>
 "noremap            <F12>        :ls<CR>:edit #
 
-"inoremap  <silent> <F2>    <C-C>:write<CR>
+inoremap  <silent> <F2>    <C-C>:write<CR>
 "inoremap  <silent> <F3>    <C-C>:Explore<CR>
 "inoremap  <silent> <F4>    <C-C>:execute ":ptag ".expand("<cword>")<CR>
 "inoremap  <silent> <F5>    <C-C>:copen<CR>
 "inoremap  <silent> <F6>    <C-C>:cclose<CR>
-"inoremap  <silent> <F7>    <C-C>:cprevious<CR>
-"inoremap  <silent> <F8>    <C-C>:cnext<CR>
+inoremap  <silent> <F7>    <C-C>:cprevious<CR>
+inoremap  <silent> <F8>    <C-C>:cnext<CR>
 "inoremap           <F12>   <C-C>:ls<CR>:edit #
 
-"noremap <f3> <esc>:previous<cr>
-"noremap <f4> <esc>:next<cr>
+"noremap <F3> <esc>:previous<CR>
+"noremap <F4> <esc>:next<CR>
 
-"noremap <f5> <esc>:bprevious<cr>
-"noremap <f6> <esc>:bnext<cr>
+"noremap <F5> <esc>:bprevious<CR>
+"noremap <F6> <esc>:bnext<CR>
 
-"noremap <f7> <esc>:cprevious<cr>
-"noremap <f8> <esc>:cnext<cr>
+"noremap <F7> <esc>:cprevious<CR>
+"noremap <F8> <esc>:cnext<CR>
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Window navigation, see :help ctrl-w
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -344,15 +346,17 @@ map <C-l> <C-w>l
 " To move between buffers and maximise the selected one
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
-"-----------------------------------------------------------------------------
+
+"--------------------------------------------------------------------------
 " Toggle highlighted search
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Press Space to turn off highlighting and clear any message already 
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-"-----------------------------------------------------------------------------
+
+"--------------------------------------------------------------------------
 " Perl stuff
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 let perl_extended_vars=1 " highlight advanced perl vars inside of strings
 let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 
@@ -368,9 +372,9 @@ let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 " Run current (.t) file through "Build test"
 "map ,bt :!perl Build test verbose=1 --test_files=%<CR>
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Some useful tips
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Make pasting from external programs work properly
 "nnoremap <F2> :set invpaste paste?<CR>
 "imap <F2> <C-O><F2>
@@ -405,17 +409,19 @@ endfunction
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>= :call Preserve("normal gg=G")<CR>
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Another tip: print all key mappings to file
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " :redir > keymap.txt
 " :silent map
 " :silent map!
 " :redir END
 
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " More tips: jumping long distances
-"-----------------------------------------------------------------------------
+"--------------------------------------------------------------------------
+" fx  - jump to next character 'x'
+" Fx  - jump to previous character 'x'
 " nG  - jump to line n ("line 5, Go")
 " C-o - jump backwards ("out")
 " C-i - jump forwards ("in")
