@@ -83,7 +83,7 @@ screen -t vim 1 vim
 split
 focus
 screen 2
-resize 5
+resize 10
 screen 3
 screen 4
 screen 5
