@@ -110,6 +110,7 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  fi
 fi
 # End of the original .bashrc file, what follows has been added by me 
 
