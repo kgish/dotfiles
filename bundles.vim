@@ -3,7 +3,6 @@ filetype off                " Required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
 " Let vundle be the bundle manager
 " Required!

@@ -160,7 +160,7 @@ if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
     source ~/perl5/perlbrew/etc/bashrc
 fi
 if [ -d "$HOME/perl5/bin" ]; then
-    export PATH=$PATH:~/perl5/bin
+    export PATH=~/perl5/bin:$PATH
 fi
 
 # Standard ML of New Jersey
@@ -168,12 +168,12 @@ if [ -d "/opt/sml/bin" ]; then
     export PATH=$PATH:/opt/sml/bin
 fi
 
-# RubyMine
+# RubyMine => mine (/usr/local/bin)
 if [ -d "/opt/rubymine/bin" ]; then
     export PATH=$PATH:/opt/rubymine/bin
 fi
 
-# WebStorm
+# WebStorm => wstorm (/usr/local/bin)
 if [ -d "/opt/webstorm/bin" ]; then
     export PATH=$PATH:/opt/webstorm/bin
 fi
@@ -199,6 +199,17 @@ fi
 # VIM74
 if [ -d "/opt/vim74/bin" ]; then
     export PATH=/opt/vim74/bin:$PATH
+fi
+
+# JAVA
+if [ -d "/usr/lib/jvm/jdk1.7.0_45" ]; then
+    export JAVA_HOME="/usr/lib/jvm/jdk1.7.0_45"
+    export PATH="$PATH:$JAVA_HOME/bin"
+fi
+
+# Node.js and NPM
+if [ -d "/opt/node/bin" ]; then
+    export PATH="$PATH:/opt/node/bin"
 fi
 
 # Trim working dir to 1/4 the screen width
@@ -263,3 +274,6 @@ fi
 # RVM
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
