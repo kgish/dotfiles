@@ -55,7 +55,7 @@ In order to be able to use the [Command-T plugin][commandt], you must have a ver
 
 Depending on your environment, e.g. after a fresh Ubuntu install, you may first have to install the following components (assuming Vim was built using the default ruby):
 
-    sudo apt-get install ruby1.9.1 ruby1.9.1
+    sudo apt-get install ruby1.9.1 ruby1.9.1-dev
 
 For more information, please have a look at the [online instructions][instructions].
 
