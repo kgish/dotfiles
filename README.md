@@ -11,6 +11,9 @@ This is where I keep all my valuable dot files for safe keeping.
 Once cloned you need to create the symlinks by doing the following:
 
     cd ~/dotfiles
+    mv ~/.profile ~/.profile.org
+    mv ~/.bashrc ~/.bashrc.org
+    mv ~/.bash_profile ~/.bash_profile.org
     ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/bash_profile ~/.bash_profile
     ln -s ~/dotfiles/bashrc ~/.bashrc
