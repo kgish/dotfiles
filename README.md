@@ -31,6 +31,14 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/vim ~/.vim
 
+
+## Directories
+
+The Vim backup and swap files are in `~/.vim/bkup` and `~/.vim/swp`, so make sure that these directories exist by running:
+
+    mkdir -p ~/.vim/bkup
+    mkdir -p ~/.vim/swp
+    
 ## Vundle
 
 Now you will have setup the vim plugin [vundle][vundle] to get things going:
@@ -40,13 +48,6 @@ Now you will have setup the vim plugin [vundle][vundle] to get things going:
 Then fire up vim (ignore error messages and hit enter) and run the following command:
 
     :BundleInstall<CR>
-
-## Directories
-
-The Vim backup and swap files are in `~/.vim/bkup` and `~/.vim/swp`, so make sure that these directories exist by running:
-
-    mkdir -p ~/.vim/bkup
-    mkdir -p ~/.vim/swp
 
 ## VIM
 
