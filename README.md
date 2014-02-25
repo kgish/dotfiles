@@ -69,6 +69,10 @@ Once ruby 1.9.1 has been installed, you can generate the makefile and build the 
     cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
     ruby extconf.rb
     make
+    
+Make sure that the plugin has been installed correctly:
+
+    :Command-T<CR>
 
 For more information, please have a look at the [online instructions][instructions].
 
