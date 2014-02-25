@@ -15,6 +15,8 @@ This is where I keep all my valuable dot files for safe keeping. These describe 
 
 ## Installation
 
+The installation is simple using good old git:
+
     git clone git://github.com/kgish/dotfiles.git
 
 ## Symlinks
