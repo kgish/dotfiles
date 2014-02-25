@@ -62,7 +62,7 @@ Depending on your environment, e.g. after a fresh Ubuntu install, you may first 
 
 For more information, please have a look at the [online instructions][instructions].
 
-## Silver Search plugin
+### Silver Search plugin
 
 The [Ag plugin][agvim] is the VIM front-end for [the silver searcher][silversearcher], which is basically ack on steroids. 
 
