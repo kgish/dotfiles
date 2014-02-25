@@ -56,9 +56,15 @@ Then fire up vim (ignore error messages and hit enter) and run the following com
 
 In order to be able to use the [Command-T plugin][commandt], you must have a version of vim compiled with ruby support. 
 
-Depending on your environment, e.g. after a fresh Ubuntu install, you may first have to install the following components (assuming Vim was built using the default ruby):
+Depending on your environment, e.g. after a fresh Ubuntu install, you may first have to install the following components (assuming Vim was built using the default ruby 1.9.1):
 
     sudo apt-get install ruby1.9.1 ruby1.9.1-dev
+    
+Once ruby 1.9.1 has been installed you can 
+
+    cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
+    ruby extconf.rb
+    make
 
 For more information, please have a look at the [online instructions][instructions].
 
