@@ -56,7 +56,7 @@ Then fire up vim (ignore error messages and hit enter) and run the following com
 
 In order to be able to use the [Command-T plugin][commandt], you must have a version of vim compiled with ruby support. 
 
-First you need to find out if Vim has been compiled with ruby support, and if it has then which version of ruby was used, which is usually just the default version that comes with the system installation.
+First you need to find out if Vim has been compiled with ruby support, and if it has then which version of ruby was used, which is usually just the default version that comes with the system installation:
 
     vim --version | grep ruby
 
@@ -64,7 +64,7 @@ Assuming Vim was built using the default ruby 1.9.1:
 
     sudo apt-get install ruby1.9.1 ruby1.9.1-dev
     
-Once ruby 1.9.1 has been installed you can 
+Once ruby 1.9.1 has been installed, you can generate the makefile and build the plugin:
 
     cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
     ruby extconf.rb
@@ -80,7 +80,7 @@ Depending on your environment, e.g. after a fresh Ubuntu install, you may first 
 
     sudo apt-get install automake libpcre3-dev liblzma-dev zlib1g-dev
 
-Then the Ag plugin cna be installed as follows:
+Then the Ag plugin can be built and installed:
 
     git clone https://github.com/ggreer/the_silver_searcher
     cd the_silver_searcher
