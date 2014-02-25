@@ -1,6 +1,17 @@
 # Dot files
 
-This is where I keep all my valuable dot files for safe keeping.
+This is where I keep all my valuable dot files for safe keeping. These describe my environment for the following:
+
+* vim
+* bash
+* ctags
+* curl
+* gem
+* git
+* irb
+* profile
+* gnu screen
+* tmux
 
 ## Installation
 
