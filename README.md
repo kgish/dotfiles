@@ -31,15 +31,18 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/vim ~/.vim
 
+## VIM
 
-## Directories
+My preferences for Vim are stored in `dotfiles/vimrc` and `dotfiles/gvimrc` respectively. All plugins and scripts are stored in the `dotfiles/vim` directory.
+
+### Directories
 
 The Vim backup and swap files are in `~/.vim/bkup` and `~/.vim/swp`, so make sure that these directories exist by running:
 
     mkdir -p ~/.vim/bkup
     mkdir -p ~/.vim/swp
     
-## Vundle
+### Vundle
 
 Now you will have setup the vim plugin [vundle][vundle] to get things going:
 
@@ -49,11 +52,7 @@ Then fire up vim (ignore error messages and hit enter) and run the following com
 
     :BundleInstall<CR>
 
-## VIM
-
-My preferences for Vim are stored in `dotfiles/vimrc` and `dotfiles/gvimrc` respectively. All plugins and scripts are stored in the `dotfiles/vim` directory.
-
-## Command-T
+### Command-T
 
 In order to be able to use the [Command-T plugin][commandt], you must have a version of vim compiled with ruby support. 
 
@@ -77,6 +76,11 @@ Then the Ag plugin cna be installed as follows:
     cd the_silver_searcher
     ./build.sh
     sudo make install 
+    
+When you are all done you can delete the directory:
+
+    cd ..
+    rm -rf the_silver_searcher
 
 ## Credits
 Special thanks goes to Drew Neil whose inspirational stuff about VIM and his [famous dotfiles][dotfiles] have proven invaluable.
