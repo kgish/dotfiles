@@ -46,7 +46,7 @@ The Vim backup and swap files are in `~/.vim/bkup` and `~/.vim/swp`, so make sur
 
 Now you will have setup the vim plugin [vundle][vundle] to get things going:
 
-    $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 Then fire up vim (ignore error messages and hit enter) and run the following command:
 
@@ -56,7 +56,11 @@ Then fire up vim (ignore error messages and hit enter) and run the following com
 
 In order to be able to use the [Command-T plugin][commandt], you must have a version of vim compiled with ruby support. 
 
-Depending on your environment, e.g. after a fresh Ubuntu install, you may first have to install the following components (assuming Vim was built using the default ruby 1.9.1):
+First you need to find out if Vim has been compiled with ruby support, and if it has then which version of ruby was used, which is usually just the default version that comes with the system installation.
+
+    vim --version | grep ruby
+
+Assuming Vim was built using the default ruby 1.9.1:
 
     sudo apt-get install ruby1.9.1 ruby1.9.1-dev
     
