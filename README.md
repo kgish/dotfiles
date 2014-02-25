@@ -61,7 +61,7 @@ Now you will have setup the vim plugin [vundle][vundle] to get things going:
 
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-Then fire up vim (ignore error messages and hit enter) and run the following command:
+Then fire up vim, ignore error messages by hitting enter to clear them, and run the following command:
 
     :BundleInstall<CR>
 
