@@ -47,12 +47,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
     else
-	color_prompt=
+    color_prompt=
     fi
 fi
 
@@ -155,11 +155,13 @@ esac
 # Cleanup vim backup files older than 7 days.
 #find $HOME/.vim/backup -name "*" -type f -mtime +7 -exec rm -f {} \;
 
+# PATH : start -------------
+
 # Perlbrew
-if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+if [ -f "~/perl5/perlbrew/etc/bashrc" ]; then
     source ~/perl5/perlbrew/etc/bashrc
 fi
-if [ -d "$HOME/perl5/bin" ]; then
+if [ -d "~/perl5/bin" ]; then
     export PATH=~/perl5/bin:$PATH
 fi
 
@@ -182,7 +184,7 @@ fi
 if [ -d "$HOME/.rvm/bin" ]; then
     PATH=$PATH:$HOME/.rvm/bin
 fi
-if [ -f "$HOME/.rvm/scripts/rvm" ]; then
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
     source "$HOME/.rvm/scripts/rvm"
 fi
 
@@ -193,24 +195,29 @@ fi
 
 # Heroku Toolbelt
 if [ -d "/usr/local/heroku/bin" ]; then
-    export PATH=/usr/local/heroku/bin:$PATH
-fi
-
-# VIM74
-if [ -d "/opt/vim74/bin" ]; then
-    export PATH=/opt/vim74/bin:$PATH
+    export PATH=$PATH:/usr/local/heroku/bin
 fi
 
 # JAVA
 if [ -d "/usr/lib/jvm/jdk1.7.0_45" ]; then
-    export JAVA_HOME="/usr/lib/jvm/jdk1.7.0_45"
-    export PATH="$PATH:$JAVA_HOME/bin"
+    export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_45
+    export PATH=$PATH:$JAVA_HOME/bin
 fi
 
-# Node.js and NPM
-if [ -d "/opt/node/bin" ]; then
-    export PATH="$PATH:/opt/node/bin"
+# NVM - Node Version Manager
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+    source "$HOME/.nvm/nvm.sh"
 fi
+
+# Sencha extJS
+if [ -d "/opt/sencha/cmd" ]; then
+    export PATH="$PATH:/opt/sencha/cmd"
+    export SENCHA_CMD_3_0_0="/opt/sencha/cmd"
+    export PATH=/opt/sencha/sdk-tools:$PATH
+    export SENCHA_SDK_TOOLS_2_0_0_BETA3="/opt/sencha/sdk-tools"
+fi
+
+# PATH : finish -------------
 
 # Trim working dir to 1/4 the screen width
 function prompt_w () {
@@ -270,10 +277,3 @@ then
 
     echo "Screen failed! continuing with normal bash startup"
 fi
-
-# RVM
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"

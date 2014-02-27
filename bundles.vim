@@ -9,6 +9,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
+Bundle 'chazy/cscope_maps'
+Bundle 'dsawardekar/ember.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
