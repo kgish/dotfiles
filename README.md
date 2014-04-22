@@ -95,7 +95,7 @@ The [Ag plugin][agvim] is the VIM front-end for [the silver searcher][silversear
 
 Depending on your environment, e.g. after a fresh Ubuntu install, you may first have to install the following components:
 
-    sudo apt-get install automake libpcre3-dev liblzma-dev zlib1g-dev
+    sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
 
 Then the Ag plugin can be built and installed:
 
