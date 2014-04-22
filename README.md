@@ -85,7 +85,7 @@ Once ruby 1.9.1 has been installed, you can generate the makefile and build the 
     
 Make sure that the plugin has been installed correctly:
 
-    :Command-T<CR>
+    :CommandT<CR>
 
 For more information, please have a look at the [online instructions][instructions].
 
