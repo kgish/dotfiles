@@ -158,16 +158,16 @@ esac
 # PATH : start -------------
 
 # Perlbrew
-if [ -f "~/perl5/perlbrew/etc/bashrc" ]; then
-    source ~/perl5/perlbrew/etc/bashrc
+if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+    source "$HOME/perl5/perlbrew/etc/bashrc"
 fi
-if [ -d "~/perl5/bin" ]; then
-    export PATH=~/perl5/bin:$PATH
+if [ -d "$HOME/perl5/bin" ]; then
+    export PATH=$HOME/perl5/bin:$PATH
 fi
 
-# Standard ML of New Jersey
-if [ -d "/opt/sml/bin" ]; then
-    export PATH=$PATH:/opt/sml/bin
+# PhpStorm => pstorm (/usr/local/bin)
+if [ -d "/opt/phpstorm/bin" ]; then
+    export PATH=$PATH:/opt/phpstorm/bin
 fi
 
 # RubyMine => mine (/usr/local/bin)
@@ -178,19 +178,6 @@ fi
 # WebStorm => wstorm (/usr/local/bin)
 if [ -d "/opt/webstorm/bin" ]; then
     export PATH=$PATH:/opt/webstorm/bin
-fi
-
-# RVM
-if [ -d "$HOME/.rvm/bin" ]; then
-    PATH=$PATH:$HOME/.rvm/bin
-fi
-if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-    source "$HOME/.rvm/scripts/rvm"
-fi
-
-# SBT
-if [ -d "/opt/sbt/bin" ]; then
-    export PATH=$PATH:/opt/sbt/bin
 fi
 
 # Heroku Toolbelt
@@ -212,9 +199,17 @@ fi
 # Sencha extJS
 if [ -d "/opt/sencha/cmd" ]; then
     export PATH="$PATH:/opt/sencha/cmd"
-    export SENCHA_CMD_3_0_0="/opt/sencha/cmd"
-    export PATH=/opt/sencha/sdk-tools:$PATH
-    export SENCHA_SDK_TOOLS_2_0_0_BETA3="/opt/sencha/sdk-tools"
+#    export SENCHA_CMD_3_0_0="/home/kiffin/sencha/Sencha/Cmd/5.0.0.160"
+#    export PATH=/opt/sencha/sdk-tools:$PATH
+#    export SENCHA_SDK_TOOLS_2_0_0_BETA3="/opt/sencha/sdk-tools"
+fi
+
+# RVM - Ruby Version Manager
+if [ -d "$HOME/.rvm/bin" ]; then
+    # Add RVM to PATH for scripting
+    PATH=$HOME/.rvm/bin:$PATH
+    # Load RVM into a shell session *as a function*
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 fi
 
 # PATH : finish -------------
