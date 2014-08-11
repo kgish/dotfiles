@@ -199,12 +199,9 @@ fi
 # Sencha extJS
 if [ -d "/opt/sencha/cmd" ]; then
     export PATH="$PATH:/opt/sencha/cmd"
-#    export SENCHA_CMD_3_0_0="/home/kiffin/sencha/Sencha/Cmd/5.0.0.160"
-#    export PATH=/opt/sencha/sdk-tools:$PATH
-#    export SENCHA_SDK_TOOLS_2_0_0_BETA3="/opt/sencha/sdk-tools"
 fi
 
-# RVM - Ruby Version Manager
+# RVM - Ruby Version Manager (needs to be last PATH)
 if [ -d "$HOME/.rvm/bin" ]; then
     # Add RVM to PATH for scripting
     PATH=$HOME/.rvm/bin:$PATH
