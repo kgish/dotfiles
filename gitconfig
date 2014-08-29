@@ -18,3 +18,5 @@
 	prompt = false
 [push]
 	default = simple
+[color]
+	ui = true
