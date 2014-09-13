@@ -5,6 +5,8 @@
 	co = checkout
 	br = branch
 	d = difftool
+	s = status -s
+	lg = log --oneline --decorate --all --graph
 [core]
 	editor = vim
 	autocrlf = input
@@ -20,3 +22,7 @@
 	default = simple
 [color]
 	ui = true
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
