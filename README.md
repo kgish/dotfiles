@@ -73,9 +73,9 @@ First you need to find out if Vim has been compiled with ruby support, and if it
 
     vim --version | grep ruby
 
-Assuming Vim was built using the default ruby 1.9.1:
+Assuming Vim was built using the default ruby 1.9.x:
 
-    sudo apt-get install ruby1.9.1 ruby1.9.1-dev
+    sudo apt-get install ruby1.9.x ruby1.9.x-dev
     
 It might be that if you are using rvm that the newly installed system ruby version is overruled by a local .rvm version. Run the following command just in case:
 
@@ -100,7 +100,7 @@ Make sure that the plugin has been installed correctly:
     
 Now you can cleanup by restoring the previous ruby version:
 
-    sudo apt-get purge ruby1.9.1 ruby1.9.1-dev
+    sudo apt-get purge ruby1.9.x ruby1.9.x-dev
 
 For more information, please have a look at the [online instructions][instructions].
 
