@@ -77,6 +77,17 @@ Assuming Vim was built using the default ruby 1.9.1:
 
     sudo apt-get install ruby1.9.1 ruby1.9.1-dev
     
+It might be that if you are using rvm that the newly installed system ruby version is overruled by a local .rvm version. Run the following command just in case:
+
+    rvm use system
+    
+Now you should be using the system ruby with the right version.
+
+    $ which ruby
+    /usr/bin/ruby
+    $ ruby --version
+    ruby 1.9.3p484 (2013-11-22 revision 43786) [x86_64-linux]
+    
 Once ruby 1.9.1 has been installed, you can generate the makefile and build the plugin:
 
     cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
@@ -86,6 +97,10 @@ Once ruby 1.9.1 has been installed, you can generate the makefile and build the 
 Make sure that the plugin has been installed correctly:
 
     :CommandT<CR>
+    
+Now you can cleanup by restoring the previous ruby version:
+
+    sudo apt-get purge ruby1.9.1 ruby1.9.1-dev
 
 For more information, please have a look at the [online instructions][instructions].
 
