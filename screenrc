@@ -84,12 +84,13 @@ split
 focus
 screen 2
 resize 10
+split -v
+focus
 screen 3
+focus
 screen 4
 screen 5
 next      # switch to first screen
-next
-focus
 
 #screen -t sh    0 bash
 #screen -t irssi 1 irssi
