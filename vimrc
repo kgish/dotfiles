@@ -227,11 +227,18 @@ nmap j gj
 " Color scheme
 "--------------------------------------------------------------------------
 colorscheme vividchalk
+"colorscheme solarized 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 if $TERM == 'xterm'
   set t_Co=256
+endif
+
+if has('gui_running')
+    set background=light
+else
+    set background=dark
 endif
 
 " Highlight the status bar when in insert mode

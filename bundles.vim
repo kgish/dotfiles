@@ -9,6 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'chazy/cscope_maps'
 Bundle 'dsawardekar/ember.vim'
 Bundle 'flazz/vim-colorschemes'
