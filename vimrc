@@ -151,6 +151,7 @@ set nocompatible
 set omnifunc=syntaxcomplete#Complete
 set number
 set printoptions=left:8pc,right:3pc
+set relativenumber 
 set ruler
 set shiftround          " When at 3 spaces and I hit >>, go to 4, not 5.
 set shiftwidth=4        " number of spaces to use for each step of indent
