@@ -1,14 +1,9 @@
+
 source ~/dotfiles/bundles.vim
 
 syntax on
 
 let mapleader = ","
-
-" Tabularize stuff
-"silent! nmap <Leader>a= :Tabularize /=<CR>
-"silent! vmap <Leader>a= :Tabularize /=<CR>
-"silent! nmap <Leader>a: :Tabularize /:\zs<CR>
-"silent! vmap <Leader>a: :Tabularize /:\zs<CR>
 
 if has("spell")
   " Toggle spell checking on and off
@@ -18,36 +13,27 @@ if has("spell")
 endif
 
 if executable('ag')
-  let g:agprg="ag --column --smart-case"
-  let g:aghighlight=1
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
   " map Silver Searcher
   silent! map <leader>a :Ag!<space>
   " search for word under cursor with Silver Searcher
   silent! map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
 endif
-
-"nmap <F8> :TagbarToggle<CR>
 
 map <Leader>bb :!bundle install --without=production<CR>
 nmap <Leader>bi :source ~/.vimrc<CR>:BundleInstall<cr>
 nnoremap <leader>hm <Esc>:call ToggleHardMode()<CR>
 " Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR> 
+nmap <leader>l :set list!<CR>
 map <Leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>t :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 map <Leader>pb <ESC>:read !pastebin -r<SPACE>
-"map <Leader>ta :CommandT app/controllers/application_controller.rb<CR>
-"map <Leader>tf :CommandTFlush<CR>:CommandT<CR>
-"map <Leader>tj :CommandT app/assets/javascripts<CR>client/
 map <Leader>so :sort %<CR>
 map <Leader>vi :tabe ~/.vimrc<CR>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<CR>
 
-"vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| 
+"vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \|
 "  \ sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 "vmap <Leader>bed "td?describe<CR>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 "map <Leader>cc :!cucumber --drb %<CR>
@@ -112,31 +98,32 @@ imap <C-s> <esc>:w<CR>
  map <C-n> :cn<CR>
  map <C-p> :cp<CR>
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " General
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 set autoindent          " always set autoindent on
 set autoread            " read open files again when changed outside Vim
 set autowrite
 set autowrite           " write a modified buffer on each :next , ...
 set background=dark     " can be light or dark
-set backspace=indent,eol,start " allow backspacing over everything in insert 
+set backspace=indent,eol,start " allow backspacing over everything in insert
                                " mode
 set backupdir =~/.vim/bkup
 set browsedir=current   " which directory to use for the file browser
-set complete+=k         " for keyword completion also scan the files given 
+set complete+=k         " for keyword completion also scan the files given
                         " with the 'dictionary' option
 set dictionary+=/usr/share/dict/words
 set directory=~/.vim/swp " directory to place swap files in
+set encoding=utf-8
 set expandtab           " no real tabs please!
-set gdefault            " assume the /g flag on :s substitutions to replace 
+set gdefault            " assume the /g flag on :s substitutions to replace
                         " all matches in a line
 set grepprg=grep
 set hidden              " you can change buffers without saving
 set history=500
 set hlsearch
 set ignorecase
-set iskeyword+=:        " double colons are valid keyword parts, e.g. 
+set iskeyword+=:        " double colons are valid keyword parts, e.g.
                         " for Perl::Module
 set incsearch           " use incremental search
 set laststatus=2        " always show status line
@@ -147,13 +134,13 @@ set matchpairs+=<:>
 set mouse=a
 set noesckeys           " remove delay when hitting esc
 set nofoldenable        " ignore code folding
-set nocompatible
+set nocompatible        " disable vi-compatability
 set omnifunc=syntaxcomplete#Complete
 set number
 set printoptions=left:8pc,right:3pc
-set relativenumber 
+set relativenumber
 set ruler
-set shiftround          " When at 3 spaces and I hit >>, go to 4, not 5.
+set shiftround          " when at 3 spaces and I hit >>, go to 4, not 5.
 set shiftwidth=4        " number of spaces to use for each step of indent
 set showcmd
 set showmatch
@@ -176,32 +163,24 @@ set statusline+=\ %P    "percent through file
 " statusline end
 set tabstop=4           " number of spaces that a <Tab> in the file counts for
 set tags=./tags,tags,../tags,../../tags,../../../tags
-set timeout timeoutlen=1000 ttimeoutlen=100 " remove delay hitting esc insert 
+set timeout timeoutlen=1000 ttimeoutlen=100 " remove delay hitting esc insert
                                             " mode
 set visualbell          " visual bell instead of beeping
 set visualbell t_vb=    " turn off visual bell, error flash
 set whichwrap=b,s,<,>,[,]
-set wildignore+=*.bak,*.o,*.e,*~,*.dll,*.o,*.obj,*.exe,*.pyc,*.swp,*.jpg
-set wildignore+=*.gif,*.png
+set wildignore=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=*.bak,*.so,*.zip,*.o,*.e,*~,*.dll,*.obj,*.exe,*.pyc,*.swp
+set wildignore+=*/tmp/*,*.tmp,.git,.hg,.svn,.idea
 set wildmenu            " Better? completion on command line
 set wildmode=list:longest,full
 set winminheight=0      " more usable for stacking windows
 set wrap
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Globals
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " To enable the saving and restoring of screen positions.
 let g:screen_size_restore_pos = 1
-
-" Prevent CommandT from taking forever to start for large directories
-let g:CommandTMaxDepth = 6
-let g:CommandTMaxHeight = 50
-let g:CommandTMatchWindowAtTop = 1
-let g:CommandTWildIgnore = &wildignore . ",**/cache/*"
-
-" Snipmate
-let g:snips_author = 'Kiffin Gish <kiffin.gish@planet.nl>'
 
 " Arrow keys disabled, but not h,j,k,l
 let g:HardMode_level = 'wannabe'
@@ -224,22 +203,14 @@ map K <Nop>
 nmap k gk
 nmap j gj
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Color scheme
-"--------------------------------------------------------------------------
-colorscheme vividchalk
-"colorscheme solarized 
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
-if $TERM == 'xterm'
-  set t_Co=256
-endif
-
+"-----------------------------------------------------------------------------
+set t_Co=256
 if has('gui_running')
-    set background=light
+  colorscheme molokai
 else
-    set background=dark
+  colorscheme molokai
 endif
 
 " Highlight the status bar when in insert mode
@@ -248,9 +219,9 @@ if version >= 700
   au InsertLeave * hi StatusLine ctermbg=255 ctermfg=0
 endif
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Auto command
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 if has("autocmd")
   " Enable file type detection
   filetype on
@@ -268,7 +239,7 @@ if has("autocmd")
 "  au BufNewFile,BufRead *.txt setlocal nolist " Don't display whitespace
   "
   " For all text files set 'textwidth' to 78 characters.
-  au FileType text,vim setlocal textwidth=78
+  au FileType text,vim setlocal textwidth=79
   au FileType text,vim setlocal colorcolumn=80
 
   " Racket stuff
@@ -287,11 +258,11 @@ if has("autocmd")
   au BufNewFile,BufRead *.pod setf pod
 
   " Restore cursor to previous (col,row) position.
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | 
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
     \ exe "normal! g`\"" | endif
   "
   " Remove trailing whitespace on save for certain files.
-  au BufWritePre *.py,*.js,*.css,*.rb.*.txt,*.pl,*.cgi silent! call 
+  au BufWritePre * silent! call
     \ Preserve("%s/\\s\\+$//e")<CR>
 
   " If no files specified start NERDTree
@@ -312,26 +283,128 @@ if has("autocmd")
   " Enable hardmode by default (disble arrow keys)
 "  au VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
+  " Markdown
+  " Markdown is now included in vim, but by default .md is read as Modula-2
+  " files.  This fixes that, because I don't ever edit Modula-2 files :)
+  let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir',
+  \ 'clojure', 'sh', 'html', 'sass', 'scss', 'haml']
+  autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
+  autocmd FileType markdown set tw=80
+
 endif
-"--------------------------------------------------------------------------
+
+"-----------------------------------------------------------------------------
+" Ctrl-P
+"-----------------------------------------------------------------------------
+let g:ctrlp_use_caching = 0
+let g:ctrlp_match_window_bottom = 1    " Show at bottom of window
+let g:ctrlp_working_path_mode = 'ra'   " Our working path is our VCS project or the current directory
+let g:ctrlp_mru_files = 1              " Enable Most Recently Used files feature
+let g:ctrlp_jump_to_buffer = 2         " Jump to tab AND buffer if already open
+let g:ctrlp_open_new_file = 'v'        " open selections in a vertical split
+let g:ctrlp_open_multiple_files = 'vr' " opens multiple selections in vertical splits to the right
+let g:ctrlp_arg_map = 0
+let g:ctrlp_dotfiles = 0               " do not show (.) dotfiles in match list
+let g:ctrlp_showhidden = 0             " do not show hidden files in match list
+let g:ctrlp_split_window = 0
+let g:ctrlp_max_height = 40            " restrict match list to a maxheight of 40
+let g:ctrlp_use_caching = 0            " don't cache, we want new list immediately each time
+let g:ctrlp_max_files = 0              " no restriction on results/file list
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_dont_split = 'NERD_tree_2' " don't split these buffers
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co'] " if you want to use git for this rather than ag
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': ['<c-e>', '<c-space>'],
+  \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+  \ 'AcceptSelection("t")': ['<c-t>'],
+  \ 'AcceptSelection("v")': ['<cr>'],
+  \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
+  \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+  \ 'PrtHistory(-1)':       ['<c-n>'],
+  \ 'PrtHistory(1)':        ['<c-p>'],
+  \ 'ToggleFocus()':        ['<c-tab>'],
+  \}
+
+"-----------------------------------------------------------------------------
+" Syntastic syntax checking
+"-----------------------------------------------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"-----------------------------------------------------------------------------
+" Airline status tabline
+"-----------------------------------------------------------------------------
+"let g:airline_theme='luna'
+let g:airline_symbols = {}
+let g:airline_powerline_fonts=0
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.readonly = 'Ꞧ'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.paste = 'Ꝑ'
+
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'REPLACE',
+  \ 'c'  : 'CMD',
+  \ 'v'  : 'VISUAL',
+  \ 'V'  : 'V-LINE',
+  \ '' : 'V-BLK',
+  \ 's'  : 'S',
+  \ 'S'  : 'S',
+  \ '' : 'S',
+  \ }
+
+"-----------------------------------------------------------------------------
+" Colorscheme switcher
+"-----------------------------------------------------------------------------
+" disable <F8>
+let g:colorscheme_switcher_define_mappings = 0
+
+"-----------------------------------------------------------------------------
+" indentLine
+"-----------------------------------------------------------------------------
+" Possibile chars: ¦, ┆, ︙ or │
+let g:indentLine_char = '︙'
+
+"-----------------------------------------------------------------------------
 " Hot keys
-"--------------------------------------------------------------------------
-noremap   <silent> <F2>         :write<CR>
+"-----------------------------------------------------------------------------
+"noremap   <silent> <F2>         :write<CR>
 "noremap   <silent> <F3>         :Explore<CR>
 "noremap   <silent> <F4>         :execute ":ptag ".expand("<cword>")<CR>
 "noremap   <silent> <F5>         :copen<CR>
 "noremap   <silent> <F6>         :cclose<CR>
-noremap   <silent> <F7>         :cprevious<CR>
-noremap   <silent> <F8>         :cnext<CR>
+"noremap   <silent> <F7>         :cprevious<CR>
+"noremap   <silent> <F8>         :cnext<CR>
 "noremap            <F12>        :ls<CR>:edit #
 
-inoremap  <silent> <F2>    <C-C>:write<CR>
+"inoremap  <silent> <F2>    <C-C>:write<CR>
 "inoremap  <silent> <F3>    <C-C>:Explore<CR>
 "inoremap  <silent> <F4>    <C-C>:execute ":ptag ".expand("<cword>")<CR>
 "inoremap  <silent> <F5>    <C-C>:copen<CR>
 "inoremap  <silent> <F6>    <C-C>:cclose<CR>
-inoremap  <silent> <F7>    <C-C>:cprevious<CR>
-inoremap  <silent> <F8>    <C-C>:cnext<CR>
+"inoremap  <silent> <F7>    <C-C>:cprevious<CR>
+"inoremap  <silent> <F8>    <C-C>:cnext<CR>
 "inoremap           <F12>   <C-C>:ls<CR>:edit #
 
 "noremap <F3> <esc>:previous<CR>
@@ -343,9 +416,11 @@ inoremap  <silent> <F8>    <C-C>:cnext<CR>
 "noremap <F7> <esc>:cprevious<CR>
 "noremap <F8> <esc>:cnext<CR>
 
-"--------------------------------------------------------------------------
+nmap <F8> :TagbarToggle<CR>
+
+"-----------------------------------------------------------------------------
 " Window navigation, see :help ctrl-w
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -355,16 +430,16 @@ map <C-l> <C-w>l
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Toggle highlighted search
-"--------------------------------------------------------------------------
-" Press Space to turn off highlighting and clear any message already 
+"-----------------------------------------------------------------------------
+" Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Perl stuff
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 let perl_extended_vars=1 " highlight advanced perl vars inside of strings
 let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 
@@ -380,9 +455,9 @@ let perl_include_pod=1 " syntax highlighting for POD files or POD segments
 " Run current (.t) file through "Build test"
 "map ,bt :!perl Build test verbose=1 --test_files=%<CR>
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Some useful tips
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Make pasting from external programs work properly
 "nnoremap <F2> :set invpaste paste?<CR>
 "imap <F2> <C-O><F2>
@@ -417,17 +492,17 @@ endfunction
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>= :call Preserve("normal gg=G")<CR>
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Another tip: print all key mappings to file
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " :redir > keymap.txt
 " :silent map
 " :silent map!
 " :redir END
 
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " More tips: jumping long distances
-"--------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " fx  - jump to next character 'x'
 " Fx  - jump to previous character 'x'
 " nG  - jump to line n ("line 5, Go")
