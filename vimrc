@@ -208,9 +208,11 @@ nmap j gj
 "-----------------------------------------------------------------------------
 set t_Co=256
 if has('gui_running')
+  set background=dark
   colorscheme molokai
 else
-  colorscheme molokai
+  set background=dark
+  colorscheme vividchalk
 endif
 
 " Highlight the status bar when in insert mode
@@ -297,36 +299,36 @@ endif
 " Ctrl-P
 "-----------------------------------------------------------------------------
 let g:ctrlp_use_caching = 0
-let g:ctrlp_match_window_bottom = 1    " Show at bottom of window
-let g:ctrlp_working_path_mode = 'ra'   " Our working path is our VCS project or the current directory
-let g:ctrlp_mru_files = 1              " Enable Most Recently Used files feature
-let g:ctrlp_jump_to_buffer = 2         " Jump to tab AND buffer if already open
-let g:ctrlp_open_new_file = 'v'        " open selections in a vertical split
-let g:ctrlp_open_multiple_files = 'vr' " opens multiple selections in vertical splits to the right
-let g:ctrlp_arg_map = 0
-let g:ctrlp_dotfiles = 0               " do not show (.) dotfiles in match list
-let g:ctrlp_showhidden = 0             " do not show hidden files in match list
-let g:ctrlp_split_window = 0
-let g:ctrlp_max_height = 40            " restrict match list to a maxheight of 40
-let g:ctrlp_use_caching = 0            " don't cache, we want new list immediately each time
-let g:ctrlp_max_files = 0              " no restriction on results/file list
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_dont_split = 'NERD_tree_2' " don't split these buffers
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-" let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co'] " if you want to use git for this rather than ag
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': ['<c-e>', '<c-space>'],
-  \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-  \ 'AcceptSelection("t")': ['<c-t>'],
-  \ 'AcceptSelection("v")': ['<cr>'],
-  \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
-  \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
-  \ 'PrtHistory(-1)':       ['<c-n>'],
-  \ 'PrtHistory(1)':        ['<c-p>'],
-  \ 'ToggleFocus()':        ['<c-tab>'],
-  \}
-
+" let g:ctrlp_match_window_bottom = 1    " Show at bottom of window
+" let g:ctrlp_working_path_mode = 'ra'   " Our working path is our VCS project or the current directory
+" let g:ctrlp_mru_files = 1              " Enable Most Recently Used files feature
+" let g:ctrlp_jump_to_buffer = 2         " Jump to tab AND buffer if already open
+" let g:ctrlp_open_new_file = 'v'        " open selections in vertical window
+" let g:ctrlp_open_multiple_files = 'vr' " opens multiple selections in vertical splits to the right
+" let g:ctrlp_arg_map = 0
+" let g:ctrlp_dotfiles = 0               " do not show (.) dotfiles in match list
+" let g:ctrlp_showhidden = 0             " do not show hidden files in match list
+" let g:ctrlp_split_window = 0
+" let g:ctrlp_max_height = 40            " restrict match list to a maxheight of 40
+" let g:ctrlp_use_caching = 0            " don't cache, we want new list immediately each time
+" let g:ctrlp_max_files = 0              " no restriction on results/file list
+" let g:ctrlp_working_path_mode = ''
+" let g:ctrlp_dont_split = 'NERD_tree_2' " don't split these buffers
+" " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" " let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co'] " if you want to use git for this rather than ag
+" let g:ctrlp_prompt_mappings = {
+"   \ 'AcceptSelection("e")': ['<c-e>', '<c-space>'],
+"   \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+"   \ 'AcceptSelection("t")': ['<c-t>'],
+"   \ 'AcceptSelection("v")': ['<cr>'],
+"   \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
+"   \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+"   \ 'PrtHistory(-1)':       ['<c-n>'],
+"   \ 'PrtHistory(1)':        ['<c-p>'],
+"   \ 'ToggleFocus()':        ['<c-tab>'],
+"   \}
+"
 "-----------------------------------------------------------------------------
 " Syntastic syntax checking
 "-----------------------------------------------------------------------------
