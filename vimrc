@@ -1,4 +1,3 @@
-
 source ~/dotfiles/bundles.vim
 
 syntax on
@@ -116,20 +115,31 @@ set dictionary+=/usr/share/dict/words
 set directory=~/.vim/swp " directory to place swap files in
 set encoding=utf-8
 set expandtab           " no real tabs please!
+set exrc
+" ----- folds start
+set foldmethod=indent   " lines with equal indent form a fold.
+set foldlevel=1
+set foldnestmax=10
+set nofoldenable        " open all folds by default
+
+" ----- folds end
 set gdefault            " assume the /g flag on :s substitutions to replace
                         " all matches in a line
 set grepprg=grep
 set hidden              " you can change buffers without saving
-set history=500
+set history=100
 set hlsearch
 set ignorecase
 set iskeyword+=:        " double colons are valid keyword parts, e.g.
                         " for Perl::Module
 set incsearch           " use incremental search
 set laststatus=2        " always show status line
+set lazyredraw          " improve scrolling speed
+set linespace=0
 set linebreak
 set list
-set listchars=precedes:<,extends:>,tab:▸\ ,eol:¬,trail:·
+" set listchars=precedes:<,extends:>,tab:▸\ ,eol:¬,trail:·
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
 set matchpairs+=<:>
 set mouse=a
 set noesckeys           " remove delay when hitting esc
@@ -139,38 +149,63 @@ set omnifunc=syntaxcomplete#Complete
 set number
 set printoptions=left:8pc,right:3pc
 set relativenumber
+
 set ruler
+set scrolloff=0         " keep a 5 line padding when moving the cursor
 set shiftround          " when at 3 spaces and I hit >>, go to 4, not 5.
 set shiftwidth=4        " number of spaces to use for each step of indent
-set showcmd
+set showcmd             " display incomplete commands
 set showmatch
 set sidescroll=10
 set smartcase
 set smartindent
 set softtabstop=4
-set statusline=%t       "tail of the filename
-" statusline start
+set splitright          " open vertical splits on the right
+set splitbelow          " open the horizontal split below
+" ----- statusline start
+set statusline=%t       " tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
-" statusline end
+set statusline+=%{&ff}] " file format
+set statusline+=%h      " help file flag
+set statusline+=%m      " modified flag
+set statusline+=%r      " read only flag
+set statusline+=%y      " filetype
+set statusline+=%=      " left/right separator
+set statusline+=%c,     " cursor column
+set statusline+=%l/%L   " cursor line/total lines
+set statusline+=\ %P    " percent through file
+" ----- statusline end
+set synmaxcol=1200      "syntax coloring long lines very slow
 set tabstop=4           " number of spaces that a <Tab> in the file counts for
 set tags=./tags,tags,../tags,../../tags,../../../tags
-set timeout timeoutlen=1000 ttimeoutlen=100 " remove delay hitting esc insert
-                                            " mode
+" set timeout timeoutlen=500 ttimeoutlen=200 " remove delay hitting esc insert
+set notimeout           " time out on key codes but not mappings
+set ttimeout
+set ttimeoutlen=100
+
+set ttyfast             "improve scrolling speed
+set ttyscroll=3
+
+" ----- undo start
+set undofile            " save undo's after file closes
+set undodir=~/.vim/undo " where to save undo histories
+set undolevels=1000     " how many undos
+set undoreload=10000    " number of lines to save for undo
+" ----- undo end
 set visualbell          " visual bell instead of beeping
 set visualbell t_vb=    " turn off visual bell, error flash
 set whichwrap=b,s,<,>,[,]
-set wildignore=*.bmp,*.gif,*.ico,*.jpg,*.png
-set wildignore+=*.bak,*.so,*.zip,*.o,*.e,*~,*.dll,*.obj,*.exe,*.pyc,*.swp
-set wildignore+=*/tmp/*,*.tmp,.git,.hg,.svn,.idea
+
+" ----- wildignore start
+set wildignore+=*.exe,*.dll,*.so,*.o,*.out,*.obj,.git,*.pyc,*.rbc,*.rbo,*.class,.svn,*.gem
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.log
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*,*/resources/*
+set wildignore+=node_modules/*,bower_components/*
+set wildignore+=*.tmp,*.swp,*~,._*,*.bak,*/tmp/*
+set wildignore+=*.class,*.beam,.divshot,.idea,
+" ----- wildignore end
+
 set wildmenu            " Better? completion on command line
 set wildmode=list:longest,full
 set winminheight=0      " more usable for stacking windows
@@ -207,9 +242,14 @@ nmap j gj
 " Color scheme
 "-----------------------------------------------------------------------------
 if has('gui_running')
+  set background=dark
+  colo grb256
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h10
   colorscheme molokai
 else
   set t_Co=256
+  set background=dark
+  colo grb256
   colorscheme vividchalk
 endif
 
@@ -233,18 +273,40 @@ if has("autocmd")
     autocmd FileType ruby,eruby,yaml setlocal path+=lib
   augroup END
 
+  " augroup vimrcEx
+  "   " Clear all autocmds for the current group
+  "   autocmd!
+  "
+  "   " Some file types use real tabs
+  "   au FileType {make,gitconfig} set noexpandtab sw=4
+  "
+  "   " Treat JSON files like JavaScript
+  "   au BufNewFile,BufRead *.json setf javascript
+  "
+  "   " Make Python follow PEP8
+  "   au FileType python set sts=4 ts=4 sw=4 tw=79
+  "
+  "   " Make sure all markdown files have the correct filetype
+  "   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
+  "
+  "   " MultiMarkdown requires 4-space tabs
+  "   au FileType markdown set sts=4 ts=4 sw=4
+  " augroup END
+
+  au BufWritePost .vimrc so $MYVIMRC
+
 " When loading text files, wrap them and don't split up words.
-  au BufNewFile,BufRead *.txt setlocal wrap linebreak colorcolumn=80
+  au BufNewFile,BufRead *.txt setlocal wrap linebreak colorcolumn=132
   au BufNewFile,BufRead *.txt setlocal formatoptions+=t
 "  au BufNewFile,BufRead *.txt setlocal nolist " Don't display whitespace
   "
   " For all text files set 'textwidth' to 78 characters.
-  au FileType text,vim setlocal textwidth=79
-  au FileType text,vim setlocal colorcolumn=80
+  au FileType text,vim setlocal textwidth=130
+  au FileType text,vim setlocal colorcolumn=132
 
   " Racket stuff
   au BufReadPost *.rkt,*.rktl set filetype=scheme
-  au filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
+  au Filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
   au Filetype ruby,eruby setlocal ts=2 sw=2 sts=2 expandtab
 
 " Miscellaneous
@@ -287,17 +349,31 @@ if has("autocmd")
   " Markdown is now included in vim, but by default .md is read as Modula-2
   " files.  This fixes that, because I don't ever edit Modula-2 files :)
   let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir',
-  \ 'clojure', 'sh', 'html', 'sass', 'scss', 'haml']
+    \ 'clojure', 'sh', 'html', 'sass', 'scss', 'haml']
   autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
-  autocmd FileType markdown set tw=80
+  autocmd FileType markdown set tw=132
 
 endif
 
 "-----------------------------------------------------------------------------
 " Ctrl-P
 "-----------------------------------------------------------------------------
-let g:ctrlp_use_caching = 0
+"let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+hi def link CtrlPMatch CursorLine
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_switch_buffer = 'Et'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor\|Android',
+  \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
+  \ }
+nnoremap <C-b> :CtrlPBuffer<cr>
+" CtrlP Delete
+"call ctrlp_bdelete#init()
+" CtrlP Funky
+let g:ctrlp_extensions = ['funky']
+let g:ctrlp_funky_multi_buffers = 1
 " let g:ctrlp_match_window_bottom = 1    " Show at bottom of window
 " let g:ctrlp_working_path_mode = 'ra'   " Our working path is our VCS project or the current directory
 " let g:ctrlp_mru_files = 1              " Enable Most Recently Used files feature
@@ -334,6 +410,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_error_symbol='✘'
+let g:syntastic_warning_symbol='☢'
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -343,8 +422,10 @@ let g:syntastic_check_on_wq = 0
 " Airline status tabline
 "-----------------------------------------------------------------------------
 "let g:airline_theme='luna'
-let g:airline_symbols = {}
-let g:airline_powerline_fonts=0
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts=1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -410,7 +491,12 @@ let g:colorscheme_switcher_define_mappings = 0
 "noremap <F7> <esc>:cprevious<CR>
 "noremap <F8> <esc>:cnext<CR>
 
-nmap <F8> :TagbarToggle<CR>
+"-----------------------------------------------------------------------------
+" Tagbar
+"-----------------------------------------------------------------------------
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+nnoremap <silent> <F9> :TagbarToggle<CR>
 
 "-----------------------------------------------------------------------------
 " Window navigation, see :help ctrl-w
