@@ -20,3 +20,11 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export PATH=/home/kiffin/sencha/Sencha/Cmd/5.0.0.160:$PATH
+
+export SENCHA_CMD_3_0_0="/opt/Sencha/Cmd/5.0.1.231"
+
+export PATH=/opt/Sencha/Cmd/5.0.1.231:$PATH

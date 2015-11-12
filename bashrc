@@ -47,12 +47,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
     else
-	color_prompt=
+    color_prompt=
     fi
 fi
 
@@ -155,51 +155,61 @@ esac
 # Cleanup vim backup files older than 7 days.
 #find $HOME/.vim/backup -name "*" -type f -mtime +7 -exec rm -f {} \;
 
+# PATH : start -------------
+
 # Perlbrew
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
-    source ~/perl5/perlbrew/etc/bashrc
+    source "$HOME/perl5/perlbrew/etc/bashrc"
 fi
 if [ -d "$HOME/perl5/bin" ]; then
-    export PATH=$PATH:~/perl5/bin
+    export PATH=$HOME/perl5/bin:$PATH
 fi
 
-# Standard ML of New Jersey
-if [ -d "/opt/sml/bin" ]; then
-    export PATH=$PATH:/opt/sml/bin
+# PhpStorm => pstorm (/usr/local/bin)
+if [ -d "/opt/phpstorm/bin" ]; then
+    export PATH=$PATH:/opt/phpstorm/bin
 fi
 
-# RubyMine
+# RubyMine => mine (/usr/local/bin)
 if [ -d "/opt/rubymine/bin" ]; then
     export PATH=$PATH:/opt/rubymine/bin
 fi
 
-# WebStorm
+# WebStorm => wstorm (/usr/local/bin)
 if [ -d "/opt/webstorm/bin" ]; then
     export PATH=$PATH:/opt/webstorm/bin
 fi
 
-# RVM
-if [ -d "$HOME/.rvm/bin" ]; then
-    PATH=$PATH:$HOME/.rvm/bin
-fi
-if [ -f "$HOME/.rvm/scripts/rvm" ]; then
-    source "$HOME/.rvm/scripts/rvm"
-fi
-
-# SBT
-if [ -d "/opt/sbt/bin" ]; then
-    export PATH=$PATH:/opt/sbt/bin
-fi
-
 # Heroku Toolbelt
 if [ -d "/usr/local/heroku/bin" ]; then
-    export PATH=/usr/local/heroku/bin:$PATH
+    export PATH=$PATH:/usr/local/heroku/bin
 fi
 
-# VIM74
-if [ -d "/opt/vim74/bin" ]; then
-    export PATH=/opt/vim74/bin:$PATH
+# JAVA
+if [ -d "/usr/lib/jvm/jdk1.7.0_45" ]; then
+    export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_45
+    export PATH=$PATH:$JAVA_HOME/bin
 fi
+
+# NVM - Node Version Manager
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+    source "$HOME/.nvm/nvm.sh"
+fi
+
+# Sencha extJS
+if [ -d "/opt/sencha/cmd" ]; then
+    export PATH="$PATH:/opt/sencha/cmd"
+fi
+
+# RVM - Ruby Version Manager (needs to be last PATH)
+if [ -d "$HOME/.rvm/bin" ]; then
+    # Add RVM to PATH for scripting
+    PATH=$HOME/.rvm/bin:$PATH
+    # Load RVM into a shell session *as a function*
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
+# PATH : finish -------------
 
 # Trim working dir to 1/4 the screen width
 function prompt_w () {
@@ -259,7 +269,3 @@ then
 
     echo "Screen failed! continuing with normal bash startup"
 fi
-
-# RVM
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

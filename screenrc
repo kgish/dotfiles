@@ -78,18 +78,30 @@ attrcolor b ".I"
 # Tell screen how to set colors. AB = background, AF=foreground 
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
-# Open up five screens at startup starting with #1
-screen -t vim 1 vim
+# Open up four screens one in each quadrant.
+screen 1
 split
+split -v
 focus
 screen 2
-resize 10
-screen 3
-screen 4
-screen 5
-next      # switch to first screen
-next
 focus
+screen 3
+split -v
+focus
+screen 4
+focus
+
+# Open up five screens at startup starting with #1
+#screen 1
+#split
+#focus
+#screen 2
+#split -v
+#focus
+#screen 3
+#focus
+#split -v
+#next      # switch to first screen
 
 #screen -t sh    0 bash
 #screen -t irssi 1 irssi
