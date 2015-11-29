@@ -364,6 +364,10 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 hi def link CtrlPMatch CursorLine
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_switch_buffer = 'Et'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor\|Android',
+  \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
+  \ }
 nnoremap <C-b> :CtrlPBuffer<cr>
 " CtrlP Delete
 "call ctrlp_bdelete#init()
@@ -433,8 +437,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.readonly = 'Ꞧ'
-let g:airline_symbols.readonly = 'RO'
+let g:airline_symbols.readonly = 'Ꞧ'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.paste = 'Ꝑ'
 
