@@ -123,7 +123,7 @@ set foldnestmax=10
 set nofoldenable        " open all folds by default
 
 " ----- folds end
-set gdefault            " assume the /g flag on :s substitutions to replace
+"set gdefault            " assume the /g flag on :s substitutions to replace
                         " all matches in a line
 set grepprg=grep
 set hidden              " you can change buffers without saving
