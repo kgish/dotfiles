@@ -14,25 +14,27 @@ alias bi="bower install"
 alias bis="bower install –save-dev"
 alias c='clear'
 alias chrome='/opt/google/chrome/google-chrome --enable-plugins'
-#alias cleanup='sudo find ~ -name '*~' -exec rm {} \;'
+alias cl='sudo find ~ -name '*~' -exec echo {} \; && echo clx will delete everything above'
+alias clx='sudo find ~ -name '*~' -exec rm {} \;'
 #find $HOME/.vim/backup -name "*" -type f -mtime +7 -exec rm -f {} \;
-alias cleanup='sudo find ~ -name '*~' -exec echo {} \;'
 alias es="ember server"
 alias ei="ember install"
 alias es='ember server'
 alias esp='ember server --proxy http://localhost:3000'
+alias espp='ember server --environment=production --proxy http://localhost:3000'
+alias espt='ember server --environment=test --proxy http://localhost:3000'
 alias es1="ember server -p 4201"
 alias es2="ember server -p 4202"
 alias es3="ember server -p 4203"
 alias es4="ember server -p 4204"
-alias est="ember server environment = test"
+alias est="ember server --environment=test"
 alias et="ember test"
 alias ets="ember test -s"
 alias ets1="ember test -s -p 4201"
 alias h='history'
 alias hn='hostname'
 alias kg='echo ssh kiffingish.com;ssh kiffingish.com'
-alias cmsm003='echo ssh 85.17.248.148;ssh 85.17.248.148'
+alias na='echo ssh na-holland.nl;ssh na-holland.nl'
 alias l.='ls -d .*'
 alias la='ls -A'
 alias ll='ls -l'
@@ -44,7 +46,7 @@ alias ni="npm install"
 alias nis="npm install –save-dev"
 alias nbi="npm install && bower install"
 alias nom='rm -rf node_modules && npm cache clear && npm install'
-alias nomall='rm -rf node_modules && npm cache clear && npm install && rm -rf bower_modules && bower cache clean && bower install'
+alias nombom='rm -rf node_modules && npm cache clear && npm install && rm -rf bower_modules && bower cache clean && bower install'
 alias phttp='python -m SimpleHTTPServer'
 alias realias='$EDITOR ~/.bash_aliases; source ~/.bash_aliases'
 alias r='fc -s'

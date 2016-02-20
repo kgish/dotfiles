@@ -356,6 +356,16 @@ if has("autocmd")
 endif
 
 "-----------------------------------------------------------------------------
+" NerdTree
+"-----------------------------------------------------------------------------
+" Automatically delete the buffer of the file you just deleted with NerdTree.
+let NERDTreeQuitOnOpen = 1
+
+" Make it look a little bit prettier.
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+"-----------------------------------------------------------------------------
 " Ctrl-P
 "-----------------------------------------------------------------------------
 "let g:ctrlp_use_caching = 0
