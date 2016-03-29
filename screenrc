@@ -79,29 +79,23 @@ attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 # Open up four screens one in each quadrant.
-screen 1
-split
-split -v
-focus
-screen 2
-focus
-screen 3
-split -v
-focus
-screen 4
-focus
-
-# Open up five screens at startup starting with #1
 #screen 1
 #split
+#split -v
 #focus
 #screen 2
-#split -v
 #focus
 #screen 3
-#focus
 #split -v
-#next      # switch to first screen
+#focus
+#screen 4
+#focus
+
+# Open up three screens at startup starting with #1.
+screen 1
+screen 2
+screen 3
+next
 
 #screen -t sh    0 bash
 #screen -t irssi 1 irssi
