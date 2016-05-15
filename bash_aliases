@@ -33,6 +33,7 @@ alias ets="ember test -s"
 alias ets1="ember test -s -p 4201"
 alias h='history'
 alias hn='hostname'
+alias gc='echo ssh gishconsultancy.com;ssh gishconsultancy.com'
 alias kg='echo ssh kiffingish.com;ssh kiffingish.com'
 alias na='echo ssh na-holland.nl;ssh na-holland.nl'
 alias l.='ls -d .*'

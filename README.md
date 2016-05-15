@@ -9,6 +9,7 @@ This is where I keep all my valuable dot files for safe keeping. These describe 
 * gem
 * git
 * irb
+* npm
 * profile
 * gnu screen
 * tmux
@@ -38,6 +39,7 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/global-gitignore ~/.gitignore
     ln -s ~/dotfiles/gvimrc ~/.gvimrc
     ln -s ~/dotfiles/irbrc ~/.irbrc
+    ln -s ~/dotfiles/npmrc ~/.npmrc
     ln -s ~/dotfiles/profile ~/.profile
     ln -s ~/dotfiles/screenrc ~/.screenrc
     ln -s ~/dotfiles/tmux.conf ~/.tmux.conf

@@ -112,7 +112,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# End of the original .bashrc file, what follows has been added by me 
+# End of the original .bashrc file, what follows has been added by me
 
 # Settings
 set -o vi
@@ -137,6 +137,13 @@ export GREP_OPTIONS='--color=auto'
 # Komodo IDE
 export PERLDB_OPTS="RemotePort=127.0.0.1:9000"
 export DBGP_IDEKEY="kgish"
+
+# Git aware prompt
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+#export PS1="\u@\h $(basename `pwd`) \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+
 
 # Prompt for screen shelltitle
 case "$TERM" in
@@ -216,7 +223,7 @@ function prompt_w () {
   local pwdmaxlen=$(($COLUMNS/4))
   local trunc_symbol="..."
   if [[ $PWD == $HOME* ]]; then
-    newPWD="~${PWD#$HOME}" 
+    newPWD="~${PWD#$HOME}"
   else
     newPWD=${PWD}
   fi
