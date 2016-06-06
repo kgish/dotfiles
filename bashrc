@@ -138,13 +138,6 @@ export GREP_OPTIONS='--color=auto'
 export PERLDB_OPTS="RemotePort=127.0.0.1:9000"
 export DBGP_IDEKEY="kgish"
 
-# Git aware prompt
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source $GITAWAREPROMPT/main.sh
-#export PS1="\u@\h $(basename `pwd`) \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
-
-
 # Prompt for screen shelltitle
 case "$TERM" in
     screen)
@@ -214,6 +207,14 @@ if [ -d "$HOME/.rvm/bin" ]; then
     PATH=$HOME/.rvm/bin:$PATH
     # Load RVM into a shell session *as a function*
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
+# Git aware prompt
+if [ -d "$HOME/.bash/git-aware-prompt" ]; then
+    export GITAWAREPROMPT=$HOME/.bash/git-aware-prompt
+    source $GITAWAREPROMPT/main.sh
+    export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+    export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 fi
 
 # PATH : finish -------------
