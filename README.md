@@ -145,6 +145,10 @@ Assuming that I am already logged in as `kiffin`, where `example.com` should be 
     $ cat .ssh/id_rsa.pub | ssh example.com 'cat >> .ssh/authorized_keys'
     $ ssh example.com  # now without password!
 
+After that you can make the login even easier by create a new `alias` in your `.bash_aliases` file:
+
+    alias example='echo ssh example.com;ssh example.com'
+
 See: http://www.linuxproblem.org/art_9.html
 
 ## Credits
