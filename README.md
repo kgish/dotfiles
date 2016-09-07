@@ -16,9 +16,13 @@ This is where I keep all my valuable dot files for safe keeping. These describe 
 
 ## Installation
 
-The installation is simple using good old git:
+First you will have to make sure that the necessary tools have been installed:
 
-    git clone git://github.com/kgish/dotfiles.git
+    $ sudo apt-get install make screen git curl wget
+
+After that the installation is simple by using good old git:
+
+    $ git clone git://github.com/kgish/dotfiles.git
 
 ## Symlinks
 
