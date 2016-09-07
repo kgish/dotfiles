@@ -84,15 +84,16 @@ In order to be able to use the [Command-T plugin][commandt], you must have a ver
 
 First you need to find out if Vim has been compiled with ruby support, and if it has then which version of ruby was used, which is usually just the default version that comes with the system installation:
 
-    vim --version | grep ruby
+    $ vim --version | grep ruby
 
 Assuming Vim was built using the default ruby 1.9.x:
 
-    sudo apt-get install ruby1.9.x ruby1.9.x-dev
+    $ sudo apt-get update
+    $ sudo apt-get install ruby1.9.x ruby1.9.x-dev
 
 It might be that if you are using rvm that the newly installed system ruby version is overruled by a local .rvm version. Run the following command just in case:
 
-    rvm use system
+    $ rvm use system
 
 Now you should be using the system ruby with the right version.
 
@@ -103,9 +104,9 @@ Now you should be using the system ruby with the right version.
 
 Once ruby 1.9.1 has been installed, you can generate the makefile and build the plugin:
 
-    cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
-    ruby extconf.rb
-    make
+    $ cd ~/dotfiles/vim/bundle/Command-T/ruby/command-t
+    $ ruby extconf.rb
+    $ make
 
 Make sure that the plugin has been installed correctly:
 
@@ -113,7 +114,7 @@ Make sure that the plugin has been installed correctly:
 
 Now you can cleanup by restoring the previous ruby version:
 
-    sudo apt-get purge ruby1.9.x ruby1.9.x-dev
+    $ sudo apt-get purge ruby1.9.x ruby1.9.x-dev
 
 For more information, please have a look at the [online instructions][instructions].
 
@@ -123,19 +124,20 @@ The [Ag plugin][agvim] is the VIM front-end for [the silver searcher][silversear
 
 Depending on your environment, e.g. after a fresh Ubuntu install, you may first have to install the following components:
 
-    sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
+    $ sudo apt-get upgrade
+    $ sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
 
 Then the Ag plugin can be built and installed:
 
-    git clone https://github.com/ggreer/the_silver_searcher
-    cd the_silver_searcher
-    ./build.sh
-    sudo make install
+    $ git clone https://github.com/ggreer/the_silver_searcher
+    $ cd the_silver_searcher
+    $ ./build.sh
+    $ sudo make install
 
 When you are all done you can delete the directory:
 
-    cd ..
-    rm -rf the_silver_searcher
+    $ cd ..
+    $ rm -rf the_silver_searcher
  
 ## Automatic login with ssh
 
