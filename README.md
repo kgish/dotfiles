@@ -136,6 +136,14 @@ When you are all done you can delete the directory:
 
     cd ..
     rm -rf the_silver_searcher
+ 
+## Automatic login with ssh
+
+    $ ssh kiffin@domain.com mkdir -p .ssh
+    $ cat .ssh/id_rsa.pub | ssh kiffin@domain.com 'cat >> .ssh/authorized_keys'
+    $ ssh kiffin@domain.com # now without password
+
+See: http://www.linuxproblem.org/art_9.html
 
 ## Credits
 Special thanks goes to Drew Neil whose inspirational stuff about VIM and his [famous dotfiles][dotfiles] have proven invaluable.
