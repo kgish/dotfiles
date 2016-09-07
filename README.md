@@ -139,9 +139,11 @@ When you are all done you can delete the directory:
  
 ## Automatic login with ssh
 
-    $ ssh kiffin@domain.com mkdir -p .ssh
-    $ cat .ssh/id_rsa.pub | ssh kiffin@domain.com 'cat >> .ssh/authorized_keys'
-    $ ssh kiffin@domain.com # now without password
+Assuming that I am already logged in as `kiffin`, where `example.com` should be replaced by the actual server name:
+
+    $ ssh example.com mkdir -p .ssh
+    $ cat .ssh/id_rsa.pub | ssh example.com 'cat >> .ssh/authorized_keys'
+    $ ssh example.com  # now without password!
 
 See: http://www.linuxproblem.org/art_9.html
 
