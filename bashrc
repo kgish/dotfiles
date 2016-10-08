@@ -132,7 +132,7 @@ export HISTIGNORE="&:ls:[bf]g:exit"
 # Miscellaneous exports
 export EDITOR=vim
 export HOSTNAME=$HOSTNAME
-export GREP_OPTIONS='--color=auto'
+#export GREP_OPTIONS='--color=auto'
 
 # Komodo IDE
 export PERLDB_OPTS="RemotePort=127.0.0.1:9000"
@@ -273,8 +273,5 @@ then
     echo "Screen failed! continuing with normal bash startup"
 fi
 
-PATH="/home/kiffin/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/kiffin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/kiffin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/kiffin/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/kiffin/perl5"; export PERL_MM_OPT;
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
