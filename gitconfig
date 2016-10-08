@@ -13,9 +13,9 @@
 [credential]
 	helper = cache --timeout=3600
 [merge]
-	tool = vimdiff
+	tool = meld
 [diff]
-	tool = vimdiff
+	tool = meld
 [difftool]
 	prompt = false
 [push]

@@ -196,11 +196,6 @@ if [ -s "$HOME/.nvm/nvm.sh" ]; then
     source "$HOME/.nvm/nvm.sh"
 fi
 
-# Sencha extJS
-if [ -d "/opt/sencha/cmd" ]; then
-    export PATH="$PATH:/opt/sencha/cmd"
-fi
-
 # RVM - Ruby Version Manager (needs to be last PATH)
 if [ -d "$HOME/.rvm/bin" ]; then
     # Add RVM to PATH for scripting
@@ -277,3 +272,9 @@ then
 
     echo "Screen failed! continuing with normal bash startup"
 fi
+
+PATH="/home/kiffin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/kiffin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/kiffin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/kiffin/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/kiffin/perl5"; export PERL_MM_OPT;
