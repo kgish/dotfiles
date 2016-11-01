@@ -42,6 +42,7 @@ Once cloned you need to create the symlinks by doing the following:
     ln -s ~/dotfiles/gitk ~/.gitk
     ln -s ~/dotfiles/global-gitignore ~/.gitignore
     ln -s ~/dotfiles/gvimrc ~/.gvimrc
+    ln -s ~/dotfiles/ideavimrc ~/.ideavimrc
     ln -s ~/dotfiles/irbrc ~/.irbrc
     ln -s ~/dotfiles/npmrc ~/.npmrc
     ln -s ~/dotfiles/profile ~/.profile
@@ -142,7 +143,7 @@ When you are all done you can delete the directory:
 
     $ cd ..
     $ rm -rf the_silver_searcher
- 
+
 ## Automatic login with ssh
 
 Assuming that I am already logged in as `kiffin`, where `example.com` should be replaced by the actual server name:
