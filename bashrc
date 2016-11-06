@@ -191,6 +191,11 @@ if [ -d "/usr/lib/jvm/jdk1.7.0_45" ]; then
     export PATH=$PATH:$JAVA_HOME/bin
 fi
 
+# BIN
+if [ -s "$HOME/bin" ]; then
+    export PATH=$HOME/bin:$PATH
+fi
+
 # NVM - Node Version Manager
 if [ -s "$HOME/.nvm/nvm.sh" ]; then
     source "$HOME/.nvm/nvm.sh"
@@ -204,6 +209,8 @@ if [ -d "$HOME/.rvm/bin" ]; then
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 fi
 
+# PATH : finish -------------
+
 # Git aware prompt
 if [ -d "$HOME/.bash/git-aware-prompt" ]; then
     export GITAWAREPROMPT=$HOME/.bash/git-aware-prompt
@@ -211,8 +218,6 @@ if [ -d "$HOME/.bash/git-aware-prompt" ]; then
     export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
     export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 fi
-
-# PATH : finish -------------
 
 # Trim working dir to 1/4 the screen width
 function prompt_w () {
@@ -272,6 +277,3 @@ then
 
     echo "Screen failed! continuing with normal bash startup"
 fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
