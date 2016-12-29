@@ -4,3 +4,5 @@ init-author-email=kiffin.gish@planet.nl
 init-author-url=http://github.com/kgish
 init-license=MIT
 save-exact=false
+loglevel=http
+engine-strict=true
