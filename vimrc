@@ -245,11 +245,11 @@ set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 set background=dark
-colorscheme cobalt2
+colorscheme vividchalk
 
 if has('gui_running')
-  set guifont=Source\ Code\ Pro:h16
-  set linespace=2
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h10
+  colorscheme molokai
   set guioptions-=r
 endif
 
