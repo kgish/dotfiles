@@ -21,7 +21,7 @@
 [push]
 	default = simple
 [color]
-	ui = true
+	ui = auto
 [pull]
 	rebase = true
 [rerere]
