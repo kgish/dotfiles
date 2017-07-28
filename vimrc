@@ -241,16 +241,16 @@ nmap j gj
 "-----------------------------------------------------------------------------
 " Color scheme
 "-----------------------------------------------------------------------------
+set t_Co=256
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
+set background=dark
+colorscheme cobalt2
+
 if has('gui_running')
-  set background=dark
-  colo grb256
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h10
-  colorscheme molokai
-else
-  set t_Co=256
-  set background=dark
-  colo grb256
-  colorscheme vividchalk
+  set guifont=Source\ Code\ Pro:h16
+  set linespace=2
+  set guioptions-=r
 endif
 
 " Highlight the status bar when in insert mode
