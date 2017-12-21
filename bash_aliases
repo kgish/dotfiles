@@ -12,28 +12,30 @@ alias ber='bundle exec rake'
 alias beru='bundle exec ruby'
 alias bers='echo bundle exec rails server; bundle exec rails server'
 alias berg='bundle exec rails generate'
-alias bi="bower install"
-alias bis="bower install –save-dev"
+alias bi='bower install'
+alias bis='bower install –save-dev'
+alias chrome-cors='google-chrome --disable-web-security --user-data-dir'
+alias chrome-cors-inc='google-chrome --disable-web-security --user-data-dir --incognito'
 alias c='clear'
 alias cpd='echo cap production deploy; cap production deploy'
 alias chrome='/opt/google/chrome/google-chrome --enable-plugins'
 alias cl='sudo find ~ -name '*~' -exec echo {} \; && echo clx will delete everything above'
 alias clx='sudo find ~ -name '*~' -exec rm {} \;'
 #find $HOME/.vim/backup -name "*" -type f -mtime +7 -exec rm -f {} \;
-alias es="ember server"
-alias ei="ember install"
+alias es='ember server'
+alias ei='ember install'
 alias es='ember server'
 alias esp='ember server --proxy http://localhost:3000'
 alias espp='ember server --environment=production --proxy http://localhost:3000'
 alias espt='ember server --environment=test --proxy http://localhost:3000'
-alias es1="ember server -p 4201"
-alias es2="ember server -p 4202"
-alias es3="ember server -p 4203"
-alias es4="ember server -p 4204"
-alias est="ember server --environment=test"
-alias et="ember test"
-alias ets="ember test -s"
-alias ets1="ember test -s -p 4201"
+alias es1='ember server -p 4201'
+alias es2='ember server -p 4202'
+alias es3='ember server -p 4203'
+alias es4='ember server -p 4204'
+alias est='ember server --environment=test'
+alias et='ember test'
+alias ets='ember test -s'
+alias ets1='ember test -s -p 4201'
 alias h='history'
 alias hn='hostname'
 alias ghc='stack exec -- ghc'
@@ -51,9 +53,9 @@ alias mms='middleman server'
 alias mysql-remove='sudo update-rc.d -f mysql remove'
 alias mysql-start='sudo service mysql start'
 alias mysql-stop='sudo service mysql stop'
-alias ni="npm install"
-alias nis="npm install –save-dev"
-alias nbi="npm install && bower install"
+alias ni='npm install'
+alias nis='npm install –save-dev'
+alias nbi='npm install && bower install'
 alias nom='rm -rf node_modules && npm cache clear && npm install'
 alias nombom='rm -rf node_modules && npm cache clear --force && npm install && rm -rf bower_components && bower cache clean && bower install'
 alias phttp='python -m SimpleHTTPServer'
