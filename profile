@@ -1,3 +1,5 @@
+# Start of the original .profile file, what follows has been added by me
+
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -21,10 +23,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
-export PATH=/home/kiffin/sencha/Sencha/Cmd/5.0.0.160:$PATH
+# End of the original .profile file, what follows has been added by me
 
-export SENCHA_CMD_3_0_0="/opt/Sencha/Cmd/5.0.1.231"
-
-export PATH=/opt/Sencha/Cmd/5.0.1.231:$PATH
+export PATH="$HOME/.cargo/bin:$PATH"

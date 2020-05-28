@@ -1,3 +1,5 @@
+# Start of the original .bashrc file, what follows has been added by me
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -37,7 +39,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -84,6 +86,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -112,7 +117,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# End of the original .bashrc file, what follows has been added by me
+
+### --- End of the original .bashrc file, what follows has been added by me
 
 # Settings
 set -o vi
@@ -155,74 +161,17 @@ esac
 # Cleanup vim backup files older than 7 days.
 #find $HOME/.vim/backup -name "*" -type f -mtime +7 -exec rm -f {} \;
 
-# PATH : start -------------
+### # Git aware prompt
+### if [ -d "$HOME/.bash/git-aware-prompt" ]; then
+###     export GITAWAREPROMPT=$HOME/.bash/git-aware-prompt
+###     source $GITAWAREPROMPT/main.sh
+###     export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+###     export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+### fi
 
-# Perlbrew
-if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
-    source "$HOME/perl5/perlbrew/etc/bashrc"
-fi
-if [ -d "$HOME/perl5/bin" ]; then
-    export PATH=$HOME/perl5/bin:$PATH
-fi
-
-# PhpStorm => pstorm (/usr/local/bin)
-if [ -d "/opt/phpstorm/bin" ]; then
-    export PATH=$PATH:/opt/phpstorm/bin
-fi
-
-# RubyMine => mine (/usr/local/bin)
-if [ -d "/opt/rubymine/bin" ]; then
-    export PATH=$PATH:/opt/rubymine/bin
-fi
-
-# WebStorm => wstorm (/usr/local/bin)
-if [ -d "/opt/webstorm/bin" ]; then
-    export PATH=$PATH:/opt/webstorm/bin
-fi
-
-# Heroku Toolbelt
-if [ -d "/usr/local/heroku/bin" ]; then
-    export PATH=$PATH:/usr/local/heroku/bin
-fi
-
-# JAVA
-if [ -d "/usr/lib/jvm/jdk1.7.0_45" ]; then
-    export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_45
-    export PATH=$PATH:$JAVA_HOME/bin
-fi
-
-# BIN
-if [ -s "$HOME/bin" ]; then
-    export PATH=$HOME/bin:$PATH
-fi
-
-# Hackage stack
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH=$HOME/.local/bin:$PATH
-fi
-
-# NVM - Node Version Manager
-if [ -s "$HOME/.nvm/nvm.sh" ]; then
-    source "$HOME/.nvm/nvm.sh"
-fi
-
-# RVM - Ruby Version Manager (needs to be last PATH)
-if [ -d "$HOME/.rvm/bin" ]; then
-    # Add RVM to PATH for scripting
-    PATH=$HOME/.rvm/bin:$PATH
-    # Load RVM into a shell session *as a function*
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-fi
-
-# PATH : finish -------------
-
-# Git aware prompt
-if [ -d "$HOME/.bash/git-aware-prompt" ]; then
-    export GITAWAREPROMPT=$HOME/.bash/git-aware-prompt
-    source $GITAWAREPROMPT/main.sh
-    export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-    export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
-fi
+# https://github.com/magicmonty/bash-git-prompt
+GIT_PROMPT_ONLY_IN_REPO=1
+source ~/dotfiles/.bash-git-prompt/gitprompt.sh
 
 # Trim working dir to 1/4 the screen width
 function prompt_w () {
@@ -339,3 +288,66 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+# PATH : start -------------
+
+# Perlbrew
+if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+    source "$HOME/perl5/perlbrew/etc/bashrc"
+fi
+if [ -d "$HOME/perl5/bin" ]; then
+    export PATH=$HOME/perl5/bin:$PATH
+fi
+
+# PhpStorm => pstorm (/usr/local/bin)
+if [ -d "/opt/phpstorm/bin" ]; then
+    export PATH=$PATH:/opt/phpstorm/bin
+fi
+
+# RubyMine => mine (/usr/local/bin)
+if [ -d "/opt/rubymine/bin" ]; then
+    export PATH=$PATH:/opt/rubymine/bin
+fi
+
+# WebStorm => wstorm (/usr/local/bin)
+if [ -d "/opt/webstorm/bin" ]; then
+    export PATH=$PATH:/opt/webstorm/bin
+fi
+
+# Heroku Toolbelt
+if [ -d "/usr/local/heroku/bin" ]; then
+    export PATH=$PATH:/usr/local/heroku/bin
+fi
+
+### # JAVA
+### if [ -d "/usr/lib/jvm/jdk1.7.0_45" ]; then
+###     export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_45
+###     export PATH=$PATH:$JAVA_HOME/bin
+### fi
+
+### Already defined in .profile
+###
+### # BIN
+### if [ -s "$HOME/bin" ]; then
+###     export PATH=$HOME/bin:$PATH
+### fi
+
+### # Hackage stack
+### if [ -d "$HOME/.local/bin" ]; then
+###     export PATH=$HOME/.local/bin:$PATH
+### fi
+
+# NVM - Node Version Manager
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+    source "$HOME/.nvm/nvm.sh"
+fi
+
+# RVM - Ruby Version Manager (needs to be last PATH)
+if [ -d "$HOME/.rvm/bin" ]; then
+    PATH=$HOME/.rvm/bin:$PATH
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
+# PATH : finish -------------
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
