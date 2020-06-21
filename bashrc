@@ -161,14 +161,6 @@ esac
 # Cleanup vim backup files older than 7 days.
 #find $HOME/.vim/backup -name "*" -type f -mtime +7 -exec rm -f {} \;
 
-### # Git aware prompt
-### if [ -d "$HOME/.bash/git-aware-prompt" ]; then
-###     export GITAWAREPROMPT=$HOME/.bash/git-aware-prompt
-###     source $GITAWAREPROMPT/main.sh
-###     export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-###     export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
-### fi
-
 # https://github.com/magicmonty/bash-git-prompt
 GIT_PROMPT_ONLY_IN_REPO=1
 source ~/dotfiles/.bash-git-prompt/gitprompt.sh
