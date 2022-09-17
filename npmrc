@@ -7,3 +7,7 @@ init.version=0.0.1
 save-exact=false
 loglevel=http
 engine-strict=false
+save-prefix=^
+//npm.pkg.github.com/:_authToken=
+@nedap:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=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

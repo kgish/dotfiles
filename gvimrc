@@ -7,10 +7,10 @@ set cursorline          " highlight the current line
 "-------------------------------------------------------------------------
 " GUI options
 "-------------------------------------------------------------------------
-set guioptions-=m       " remove the menu completely
-set guioptions-=T       " remove the toolbar completely
-set guioptions+=c       " use console dialogs instead of popup dialogs
-set guioptions-=rL      " disable scrollbars
+"set guioptions-=m       " remove the menu completely
+"set guioptions-=T       " remove the toolbar completely
+"set guioptions+=c       " use console dialogs instead of popup dialogs
+"set guioptions-=rL      " disable scrollbars
 
 "-------------------------------------------------------------------------
 " HexHighlight - colors hex numbers
@@ -27,8 +27,8 @@ endif
 "-------------------------------------------------------------------------
 " Save and restore screen size and position
 "-------------------------------------------------------------------------
-" To save and restore screen for each Vim instance. This is useful if you 
-" routinely run more than one Vim instance. For all Vim to use the same 
+" To save and restore screen for each Vim instance. This is useful if you
+" routinely run more than one Vim instance. For all Vim to use the same
 " settings, change this to 0.
 "let g:screen_size_by_vim_instance = 1
 "
